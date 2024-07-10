@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return const HomeScreen();
+            return HomeScreen();
           },
         ),
       );
@@ -25,41 +25,43 @@ class SplashScreen extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Stack(children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/vegan.png',
-                width: 180,
-              )
-            ],
-          ),
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Column(
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Version 1.0.14",
-                  style: TextStyles.rubikregular14black3B,
-                ),
-                SizedBox(height: height8),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    "Copyright @ 2024 Vegan",
-                    style: TextStyles.rubikregular14grey66,
-                  ),
-                ),
-                SizedBox(
-                  height: height44,
-                ),
+                Image.asset(
+                  'assets/vegan.png',
+                  width: 180,
+                )
               ],
             ),
-          ),
-        ]),
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  Text(
+                    "Version 1.0.14",
+                    style: TextStyles.rubikregular14black3B,
+                  ),
+                  SizedBox(height: height8),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "Copyright @ 2024 Vegan",
+                      style: TextStyles.rubikregular14grey66,
+                    ),
+                  ),
+                  SizedBox(
+                    height: height44,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
