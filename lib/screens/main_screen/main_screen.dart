@@ -1,19 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_shop_app/screens/sub_screen/cart/cart_widget.dart';
+import 'package:fruit_shop_app/screens/sub_screen/categories/category_widget.dart';
+import 'package:fruit_shop_app/screens/sub_screen/explore/explore_widget.dart';
+import 'package:fruit_shop_app/screens/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
 import 'package:svg_flutter/svg.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class MainScreen extends StatefulWidget {
+  MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  static final List<Widget> _screens = [
+    const HomeWidget(),
+    const ExploreWidget(),
+    const CategoryWidget(),
+    const CartWidget()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [HomeAppBar()],
+            children: [
+              const SizedBox(height: 10),
+              const HomeAppBar(),
+              Expanded(
+                child: _screens[_selectedIndex],
+              ),
+            ],
           ),
         ),
       ),
@@ -88,7 +118,7 @@ class HomeScreen extends StatelessWidget {
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.red,
-          //onTap: _onItemTapped,
+          onTap: _onItemTapped,
         ),
       ),
     );

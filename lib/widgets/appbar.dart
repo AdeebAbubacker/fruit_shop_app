@@ -21,18 +21,9 @@ class HomeAppBar extends StatefulWidget {
 }
 
 class _HomeAppBarState extends State<HomeAppBar> {
-  String qrResult = 'Scanned Data will appear here';
-  String userId = 'e';
-  String offerStatus = '';
-
   @override
   void initState() {
     super.initState();
-  }
-
-  void _showMessage(BuildContext context, String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -68,7 +59,11 @@ class _HomeAppBarState extends State<HomeAppBar> {
                             top: 10,
                             bottom: 10,
                           ),
-                          child: SvgPicture.asset("assets/back_arrow.svg"),
+                          child: Image.asset(
+                            "assets/app_bar/hamberger.png",
+                            color: Colors.black,
+                            width: 25,
+                          ),
                         ),
                       ),
                     ),
@@ -99,9 +94,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
               child: Image.asset(
                 'assets/vegan.png',
                 width: 190,
-                height: 37,
+                height: 33,
                 fit: BoxFit
                     .contain, // Maintain aspect ratio while fitting the image within the box
+                color: Colors.red,
               ),
             ),
             const Spacer(),
