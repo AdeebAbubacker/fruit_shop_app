@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_shop_app/screens/sub_screen/cart/cart_widget.dart';
-import 'package:fruit_shop_app/screens/sub_screen/categories/category_widget.dart';
-import 'package:fruit_shop_app/screens/sub_screen/explore/explore_widget.dart';
-import 'package:fruit_shop_app/screens/sub_screen/home/home_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/cart/cart_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/categories/category_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/explore/explore_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
 import 'package:svg_flutter/svg.dart';
 

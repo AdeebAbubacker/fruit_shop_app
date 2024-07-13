@@ -36,8 +36,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
       visible: widget.isVisible,
       child: Padding(
         padding: EdgeInsets.only(
-          left: paddingw10,
-          right: paddingw10,
+          left: 5,
+          right: 5,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
