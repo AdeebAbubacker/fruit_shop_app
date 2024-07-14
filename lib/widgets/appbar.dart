@@ -38,6 +38,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
         padding: EdgeInsets.only(
           left: 5,
           right: 5,
+          bottom: 25,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
