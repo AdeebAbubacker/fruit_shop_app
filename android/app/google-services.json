@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "130659922072",
+    "project_id": "appdistribution-f59e9",
+    "storage_bucket": "appdistribution-f59e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130659922072:android:618623653a3002a8cba0ed",
+        "android_client_info": {
+          "package_name": "com.vegan.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAC64eQzk7UolA9wEiPzRZbChlN_uK67s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130659922072:android:952f96e751bd3102cba0ed",
+        "android_client_info": {
+          "package_name": "com.yesyesloyalty.yes_loyality.yes_loyali"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAC64eQzk7UolA9wEiPzRZbChlN_uK67s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -16,29 +24,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        useMaterial3: false,
       ),
-      home: const SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/sigin': (context) => const SignInScreen(),
+        '/register': (context) => const RegistrationScreen(),
+      },
+      home: const RegistrationScreen(),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:fruit_shop_app/widgets/caroul_widget.dart';
-
-// void main() {
-//   runApp(
-//     const MaterialApp(
-//       home: CarouselWidget(
-//         imgList: [
-//           'https://via.placeholder.com/600x400/FF0000/FFFFFF?text=Image1',
-//           'https://via.placeholder.com/600x400/00FF00/FFFFFF?text=Image2',
-//           'https://via.placeholder.com/600x400/0000FF/FFFFFF?text=Image3',
-//           'https://via.placeholder.com/600x400/FFFF00/FFFFFF?text=Image4',
-//           'https://via.placeholder.com/600x400/FF00FF/FFFFFF?text=Image5',
-//         ],
-//       ),
-//     ),
-//   );
-// }
