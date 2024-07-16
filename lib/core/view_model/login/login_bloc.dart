@@ -8,13 +8,25 @@ part 'login_state.dart';
 part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState.initial()) {
-    AuthService authService = AuthService(FirebaseAuth.instance);
+  final AuthService authService;
+  LoginBloc(this.authService) : super(const LoginState.initial()) {
     on<_LoginRequested>((event, emit) async {
-      emit(LoginState.loading());
-      final result = await authService.login(event.email, event.password);
-      result.fold((failure) => LoginFailure(error: failure),
-          (success) => LoginState.loginSuccess(user: success!));
+      emit(const LoginState.loading());
+
+      try {
+        final result = await authService.login(event.email, event.password);
+
+        await result.fold((failure) async {
+          emit(LoginState.loginFailure(error: failure.toString()));
+        }, (success) async {
+          // var accessToken = await SetSharedPreferences.storeAccessToken(
+          //         success.misc.accessToken) ??
+          //     'Access Token empty';
+          emit(LoginState.loginSuccess(user: success!));
+        });
+      } catch (e) {
+        emit(LoginState.loginFailure(error: 'An error occurred: $e'));
+      }
     });
   }
 }

@@ -1,125 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
+import 'package:fruit_shop_app/core/routes/app_route.dart';
+import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
 import 'package:fruit_shop_app/widgets/password_textfield.dart';
 import 'package:fruit_shop_app/widgets/textfield.dart';
-
 import 'package:jumping_dot/jumping_dot.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
-  State<RegistrationScreen> createState() => _RegistrationScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  bool showDots = false;
   final _passwordController = TextEditingController();
-  final _emailcontroller = TextEditingController();
-  final FocusNode emailfocusNode = FocusNode();
-  final FocusNode passwordfocusNode = FocusNode();
-  String? _emailErrorText;
-  String? _passwordErrorText;
-  bool _formSubmitted = false; // Add this boolean flag
-
-  Future<void> _register() async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailcontroller.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      // Navigate to the next screen or show success message
-      print('User registered: ${userCredential.user!.email}');
-    } catch (e) {
-      // Handle registration errors (e.g., display error message)
-      print('Failed to register: $e');
-      // Show error to the user
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to register: $e'),
-          duration: Duration(seconds: 5),
-        ),
-      );
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _emailcontroller.addListener(_onEmailChanged);
-    _passwordController.addListener(_onPasswordChanged);
-  }
+  final _emailController = TextEditingController();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
 
   @override
   void dispose() {
-    _emailcontroller.removeListener(_onEmailChanged);
-    _passwordController.removeListener(_onPasswordChanged);
+    _passwordController.dispose();
+    _emailController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
-  }
-
-  void _onEmailChanged() {
-    if (_formSubmitted) {
-      // Only validate if the form has been submitted at least once
-      _validateEmail(_emailcontroller.text);
-    }
-  }
-
-  void _validateEmail(String value) {
-    if (value.isEmpty) {
-      setState(() {
-        _emailErrorText = 'Email is required';
-      });
-    } else if (!value.contains('@')) {
-      setState(() {
-        _emailErrorText = 'Invalid format';
-      });
-    } else {
-      // Clear error if value becomes non-empty
-      if (_emailErrorText != null) {
-        setState(() {
-          _emailErrorText = null;
-        });
-      }
-    }
-  }
-
-  void _onPasswordChanged() {
-    if (_formSubmitted) {
-      // Only validate if the form has been submitted at least once
-      _validatePassword(_passwordController.text);
-    }
-  }
-
-  void _validatePassword(String value) {
-    setState(() {
-      if (value.isEmpty) {
-        _passwordErrorText = 'Password is required';
-      } else if (value.length < 8) {
-        _passwordErrorText = 'Password must be at least 8 characters long';
-      } else {
-        _passwordErrorText = null;
-      }
-    });
-  }
-
-  void _submitForm() {
-    setState(() {
-      _formSubmitted =
-          true; // Set form submitted to true when the button is clicked
-      // Validate password field
-      _validateEmail(_emailcontroller.text);
-      _validatePassword(_passwordController.text);
-    });
-
-    if (_emailcontroller.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
-      setState(() {
-        showDots = true;
-      });
-    }
   }
 
   @override
@@ -133,12 +43,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     return GestureDetector(
       onTap: () {
-        emailfocusNode.unfocus();
-        passwordfocusNode.unfocus();
+        emailFocusNode.unfocus();
+        passwordFocusNode.unfocus();
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Center(
+        body: BlocListener<RegisterBloc, RegisterState>(
+          listener: (context, state) {
+            state.maybeMap(
+              registerSuccess: (value) {
+                // Navigate to home screen
+              },
+              registerFailure: (value) {
+                // Show error message
+              },
+              loading: (_) {
+                print('----------loading');
+              },
+              orElse: () {},
+            );
+          },
           child: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: devicePadding),
@@ -148,17 +72,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FractionallySizedBox(
-                        widthFactor: 0.75, // Take full available width
+                        widthFactor: 0.75,
                         child: Image.asset(
                           'assets/vegan.png',
-                          fit: BoxFit
-                              .contain, // Maintain aspect ratio while fitting the image within the box
+                          fit: BoxFit.contain,
                           color: Colors.red,
                         ),
                       ),
                       SizedBox(height: perc20),
                       Text(
-                        'Hello, Welcome back !',
+                        'Hello, Welcome back!',
                         style: TextStyles.bold24black24,
                       ),
                       SizedBox(height: perc20),
@@ -168,44 +91,42 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                       SizedBox(height: perc281),
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Textfield(
-                            focusNode: emailfocusNode,
-                            errorText: _emailErrorText,
+                            focusNode: emailFocusNode,
+                            errorText: null,
                             hintText: 'Enter Email',
-                            textEditingController: _emailcontroller,
+                            textEditingController: _emailController, textstyle: TextStyles.bold11black24,
                           ),
                           SizedBox(height: elementPaddingVertical),
                           PassWordTextfield(
-                            focusNode: passwordfocusNode,
-                            errorText: _passwordErrorText,
+                            focusNode: passwordFocusNode,
+                            errorText: null,
                             hintText: 'Enter Password',
                             textEditingController: _passwordController,
                           ),
-                          //SizedBox(height: 5),
                           TextButton(
                             onPressed: () {
-                              //   navigateToForgotPassword(context);
+                              // Navigate to forgot password screen
                             },
-                            child: Wrap(
-                              // Wrap the child with IntrinsicWidth
-                              children: [
-                                Text(
-                                  'Forgot your password?',
-                                  style: TextStyles.medium16black00,
-                                  textAlign: TextAlign.start,
-                                ),
-                              ],
+                            child: Text(
+                              'Forgot your password?',
+                              style: TextStyles.medium16black00,
+                              textAlign: TextAlign.start,
                             ),
                           )
                         ],
                       ),
                       const SizedBox(height: 10),
                       ColoredButton(
-                        // onPressed: _submitForm,
-                      onPressed: _register,
+                        onPressed: () {
+                          final email = _emailController.text;
+                          final password = _passwordController.text;
+                          context.read<RegisterBloc>().add(
+                              RegisterEvent.registerRequested(
+                                  email: email, password: password));
+                        },
                         text: 'Sign Up',
                       ),
                       SizedBox(height: perc187),
@@ -213,12 +134,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Have an account?  ",
+                            "Have an account? ",
                             style: TextStyles.rubikregular16grey77w400,
                           ),
                           InkWell(
                             onTap: () {
-                              //navigateToSignUp(context);
+                              Navigator.of(context).pop();
                             },
                             child: Text(
                               "Sign In",
@@ -232,7 +153,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Visibility(
-                      visible: showDots,
+                      visible: false, // Change this to true to show the loading indicator
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 30),
                         child: Container(

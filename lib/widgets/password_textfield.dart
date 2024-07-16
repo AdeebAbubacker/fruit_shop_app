@@ -1,23 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 
-
 class PassWordTextfield extends StatefulWidget {
   final FocusNode focusNode;
-    final String hintText;
-  final errorText;
-   TextEditingController textEditingController = TextEditingController();
+  final String hintText;
+  final String? errorText;
+  final TextEditingController textEditingController;
 
-   PassWordTextfield({
+  const PassWordTextfield({
     super.key,
     required this.hintText,
- required   this.textEditingController,
- required this.focusNode,
+    required this.textEditingController,
+    required this.focusNode,
     this.errorText,
   });
-
 
   @override
   _PassWordTextfieldState createState() => _PassWordTextfieldState();
@@ -32,7 +29,7 @@ class _PassWordTextfieldState extends State<PassWordTextfield> {
     double elempaddingVertical = elemGapVertical(context);
     return SizedBox(
       width: double.infinity,
-     // height: 57,
+      // height: 57,
       child: TextField(
         focusNode: widget.focusNode,
         controller: widget.textEditingController,

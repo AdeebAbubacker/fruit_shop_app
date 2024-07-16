@@ -1,29 +1,28 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/const.dart';
-import 'package:fruit_shop_app/core/constants/text_styles.dart';
+
 
 class Textfield extends StatelessWidget {
-  var errorText;
-  final String? hintText;
-  final bool enabled;
   final FocusNode focusNode;
-  TextEditingController textEditingController = TextEditingController();
+  final String hintText;
+  final String? errorText;
+  final TextEditingController textEditingController;
+  final bool enabled;
   final TextStyle textstyle;
-  bool isSpecialCharAllowed;
-  Textfield({
+  final bool isSpecialCharAllowed;
+  const Textfield({
     super.key,
-    this.hintText,
+    required this.hintText,
     required this.textEditingController,
     required this.focusNode,
-    TextStyle? textstyle,
+    required this.textstyle,
     this.errorText,
     this.enabled = true,
     this.isSpecialCharAllowed = true,
-  }) : textstyle = textstyle ?? TextStyles.rubikregular16black24w400;
+  });
 
   @override
   Widget build(BuildContext context) {
