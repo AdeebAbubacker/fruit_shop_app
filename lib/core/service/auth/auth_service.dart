@@ -1,0 +1,20 @@
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class AuthService {
+  final FirebaseAuth _firebaseAuth;
+
+  AuthService(this._firebaseAuth);
+
+  Future<Either<String, User?>> login(String email, String password) async {
+    try {
+      UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email.trim(),
+        password: password.trim(),
+      );
+      return Right(userCredential.user);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+}

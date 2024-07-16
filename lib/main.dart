@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
 import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
@@ -20,19 +22,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          useMaterial3: false,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const SignInScreen(),
+          '/sigin': (context) => const SignInScreen(),
+          '/register': (context) => const RegistrationScreen(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/sigin': (context) => const SignInScreen(),
-        '/register': (context) => const RegistrationScreen(),
-      },
-      home: const RegistrationScreen(),
     );
   }
 }
