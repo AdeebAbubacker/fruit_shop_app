@@ -4,10 +4,10 @@ import 'package:fruit_shop_app/screens/main_screen/sub_screen/categories/categor
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/explore/explore_widget.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
-import 'package:svg_flutter/svg.dart';
+
 
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();

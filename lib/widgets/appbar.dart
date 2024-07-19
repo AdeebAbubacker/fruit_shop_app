@@ -29,7 +29,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     final screenwidth = screenWidth(context);
-    final paddingw10 = screenwidth * 10 / FigmaConstants.figmaDeviceWidth;
+   
     final paddingw20 = screenwidth * 20 / FigmaConstants.figmaDeviceWidth;
 
     return Visibility(

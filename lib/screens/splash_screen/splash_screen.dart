@@ -3,8 +3,7 @@ import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/const.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/routes/app_route.dart';
-import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
-import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

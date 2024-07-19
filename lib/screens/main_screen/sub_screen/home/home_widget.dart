@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_shop_app/animations/announcement_icon.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/widgets/caroul_widget.dart';
 import 'package:fruit_shop_app/widgets/home_list_horizontal.dart';

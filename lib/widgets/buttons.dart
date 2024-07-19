@@ -311,8 +311,7 @@ class QrResultDoneButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenwidth = screenWidth(context);
-    final buttonwidth = screenwidth * 335 / FigmaConstants.figmaDeviceWidth;
+
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -327,12 +326,12 @@ class QrResultDoneButton extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: isactive
                         ? [
-                            Color(0xFFFF6D70),
-                            Color(0xFFEE1F23),
+                            const Color(0xFFFF6D70),
+                            const Color(0xFFEE1F23),
                           ]
                         : [
-                            Color.fromARGB(210, 255, 109, 111),
-                            Color.fromARGB(207, 238, 31, 34),
+                            const Color.fromARGB(210, 255, 109, 111),
+                            const Color.fromARGB(207, 238, 31, 34),
                           ],
                   ),
                 ),
