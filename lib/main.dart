@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
-import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) =>  const SplashScreen(),
+          '/': (context) =>  const SignInScreen(),
           '/sigin': (context) =>  SignInScreen(),
           '/register': (context) =>  const RegistrationScreen(),
           '/mainScreen': (context) => MainScreen(),
