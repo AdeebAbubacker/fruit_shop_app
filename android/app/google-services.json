@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "130659922072",
-    "project_id": "appdistribution-f59e9",
-    "storage_bucket": "appdistribution-f59e9.appspot.com"
+    "project_number": "354808192907",
+    "project_id": "up-homes-72ygjg",
+    "storage_bucket": "up-homes-72ygjg.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:130659922072:android:618623653a3002a8cba0ed",
+        "mobilesdk_app_id": "1:354808192907:android:33b9fb76851d999bc2198e",
         "android_client_info": {
-          "package_name": "com.vegan.app"
+          "package_name": "com.mycompany.uphomes"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBAC64eQzk7UolA9wEiPzRZbChlN_uK67s"
+          "current_key": "AIzaSyBULX-lnVLNb0MVpw6qDmu73xSZHxJe0P8"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:130659922072:android:952f96e751bd3102cba0ed",
+        "mobilesdk_app_id": "1:354808192907:android:2be6c5580a91597ec2198e",
         "android_client_info": {
-          "package_name": "com.yesyesloyalty.yes_loyality.yes_loyali"
+          "package_name": "com.vegan.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBAC64eQzk7UolA9wEiPzRZbChlN_uK67s"
+          "current_key": "AIzaSyBULX-lnVLNb0MVpw6qDmu73xSZHxJe0P8"
         }
       ],
       "services": {

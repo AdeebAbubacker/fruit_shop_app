@@ -41,48 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC6f_1TfsdC18V6E9VZU46GPttxVnjEe8o',
-    appId: '1:130659922072:web:0085aa68915f69adcba0ed',
-    messagingSenderId: '130659922072',
-    projectId: 'appdistribution-f59e9',
-    authDomain: 'appdistribution-f59e9.firebaseapp.com',
-    storageBucket: 'appdistribution-f59e9.appspot.com',
-    measurementId: 'G-1724LM1G8H',
+    apiKey: 'AIzaSyB0-lLNNr-Ixieb8l877Ysm0uxXlJ7XpfI',
+    appId: '1:354808192907:web:955252109aaa2010c2198e',
+    messagingSenderId: '354808192907',
+    projectId: 'up-homes-72ygjg',
+    authDomain: 'up-homes-72ygjg-61fd9.firebaseapp.com',
+    storageBucket: 'up-homes-72ygjg.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBAC64eQzk7UolA9wEiPzRZbChlN_uK67s',
-    appId: '1:130659922072:android:618623653a3002a8cba0ed',
-    messagingSenderId: '130659922072',
-    projectId: 'appdistribution-f59e9',
-    storageBucket: 'appdistribution-f59e9.appspot.com',
+    apiKey: 'AIzaSyBULX-lnVLNb0MVpw6qDmu73xSZHxJe0P8',
+    appId: '1:354808192907:android:2be6c5580a91597ec2198e',
+    messagingSenderId: '354808192907',
+    projectId: 'up-homes-72ygjg',
+    storageBucket: 'up-homes-72ygjg.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDJPjH2I9need7jxBNtjiSdpOPib_kaFcQ',
-    appId: '1:130659922072:ios:7ccdf62197c69466cba0ed',
-    messagingSenderId: '130659922072',
-    projectId: 'appdistribution-f59e9',
-    storageBucket: 'appdistribution-f59e9.appspot.com',
+    apiKey: 'AIzaSyB5uE4_9rHE9p8YnpeSpw1HxKAWc4rkn-k',
+    appId: '1:354808192907:ios:762251d0744c885dc2198e',
+    messagingSenderId: '354808192907',
+    projectId: 'up-homes-72ygjg',
+    storageBucket: 'up-homes-72ygjg.appspot.com',
     iosBundleId: 'com.example.fruitShopApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDJPjH2I9need7jxBNtjiSdpOPib_kaFcQ',
-    appId: '1:130659922072:ios:7ccdf62197c69466cba0ed',
-    messagingSenderId: '130659922072',
-    projectId: 'appdistribution-f59e9',
-    storageBucket: 'appdistribution-f59e9.appspot.com',
+    apiKey: 'AIzaSyB5uE4_9rHE9p8YnpeSpw1HxKAWc4rkn-k',
+    appId: '1:354808192907:ios:762251d0744c885dc2198e',
+    messagingSenderId: '354808192907',
+    projectId: 'up-homes-72ygjg',
+    storageBucket: 'up-homes-72ygjg.appspot.com',
     iosBundleId: 'com.example.fruitShopApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyC6f_1TfsdC18V6E9VZU46GPttxVnjEe8o',
-    appId: '1:130659922072:web:ab212adb6ae0609ecba0ed',
-    messagingSenderId: '130659922072',
-    projectId: 'appdistribution-f59e9',
-    authDomain: 'appdistribution-f59e9.firebaseapp.com',
-    storageBucket: 'appdistribution-f59e9.appspot.com',
-    measurementId: 'G-6EZP4VYJRZ',
+    apiKey: 'AIzaSyB0-lLNNr-Ixieb8l877Ysm0uxXlJ7XpfI',
+    appId: '1:354808192907:web:e15ea7597181dddcc2198e',
+    messagingSenderId: '354808192907',
+    projectId: 'up-homes-72ygjg',
+    authDomain: 'up-homes-72ygjg-61fd9.firebaseapp.com',
+    storageBucket: 'up-homes-72ygjg.appspot.com',
   );
+
 }
