@@ -1,13 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/routes/app_route.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
-import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
-import 'package:fruit_shop_app/widgets/password_textfield.dart';
 import 'package:fruit_shop_app/widgets/textfield.dart';
 import 'package:jumping_dot/jumping_dot.dart';
 
@@ -15,37 +11,20 @@ class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final passwordController = TextEditingController();
-  final emailController = TextEditingController();
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
-
-  @override
-  void dispose() {
-    passwordController.dispose();
-    emailController.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    super.dispose();
-  }
-
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  final FocusNode emailfocusNode = FocusNode();
+  final FocusNode passwordfocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double devicePadding = outerPadding(context);
-    double elementPaddingVertical = elemPaddingVertical(context);
-    double perc20 = screenHeight * 0.020;
-    double perc187 = screenHeight * 0.0187;
-    double perc281 = screenHeight * 0.0281;
-
     return GestureDetector(
       onTap: () {
-        emailFocusNode.unfocus();
-        passwordFocusNode.unfocus();
+        emailfocusNode.unfocus();
+        passwordfocusNode.unfocus();
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -66,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
           },
           child: Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: devicePadding),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(
                 children: [
                   Column(
@@ -80,33 +59,28 @@ class _SignInScreenState extends State<SignInScreen> {
                           color: Colors.red,
                         ),
                       ),
-                      SizedBox(height: perc20),
+                      SizedBox(height: 10),
                       Text(
                         'Hello, Welcome back!',
                         style: TextStyles.bold24black24,
                       ),
-                      SizedBox(height: perc20),
+                      SizedBox(height: 10),
                       Text(
                         'Sign in to continue',
                         style: TextStyles.semibold16grey77,
                       ),
-                      SizedBox(height: perc281),
+                      SizedBox(height: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Textfield(
-                            focusNode: emailFocusNode,
-                            errorText: null,
-                            hintText: 'Enter Email',
-                            textEditingController: emailController,
-                            textstyle: TextStyles.bold11black24,
+                          TextFieldWidget(
+                            focusNode: emailfocusNode,
+                            controller: emailcontroller,
                           ),
-                          SizedBox(height: elementPaddingVertical),
-                          PassWordTextfield(
-                            focusNode: passwordFocusNode,
-                            errorText: null,
-                            hintText: 'Enter Password',
-                            textEditingController: passwordController,
+                          SizedBox(height: 20),
+                          TextFieldWidget(
+                            focusNode: passwordfocusNode,
+                            controller: passwordcontroller,
                           ),
                           TextButton(
                             onPressed: () {
@@ -123,15 +97,15 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(height: 10),
                       ColoredButton(
                         onPressed: () {
-                          final email = emailController.text;
-                          final password = passwordController.text;
+                          final email = emailcontroller.text;
+                          final password = passwordcontroller.text;
                           context.read<LoginBloc>().add(
                               LoginEvent.loginRequested(
                                   email: email, password: password));
                         },
                         text: 'Sign In',
                       ),
-                      SizedBox(height: perc187),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -141,7 +115,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                           InkWell(
                             onTap: () {
-                              // Navigate to register screen
+                              navigateToRegister(context);
                             },
                             child: Text(
                               "Sign Up",
@@ -155,7 +129,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Visibility(
-                      visible: false, // Change this to true to show the loading indicator
+                      visible:
+                          false, // Change this to true to show the loading indicator
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 30),
                         child: Container(

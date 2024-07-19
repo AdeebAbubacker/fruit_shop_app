@@ -1,12 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
-import 'package:fruit_shop_app/core/routes/app_route.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
-import 'package:fruit_shop_app/widgets/password_textfield.dart';
 import 'package:fruit_shop_app/widgets/textfield.dart';
 import 'package:jumping_dot/jumping_dot.dart';
 
@@ -18,17 +15,17 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final _passwordController = TextEditingController();
-  final _emailController = TextEditingController();
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  final FocusNode emailfocusNode = FocusNode();
+  final FocusNode passwordfocusNode = FocusNode();
 
   @override
   void dispose() {
-    _passwordController.dispose();
-    _emailController.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
+    passwordcontroller.dispose();
+    emailcontroller.dispose();
+    emailfocusNode.dispose();
+    passwordfocusNode.dispose();
     super.dispose();
   }
 
@@ -43,8 +40,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     return GestureDetector(
       onTap: () {
-        emailFocusNode.unfocus();
-        passwordFocusNode.unfocus();
+        emailfocusNode.unfocus();
+        passwordfocusNode.unfocus();
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -93,18 +90,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Textfield(
-                            focusNode: emailFocusNode,
-                            errorText: null,
-                            hintText: 'Enter Email',
-                            textEditingController: _emailController, textstyle: TextStyles.bold11black24,
+                          TextFieldWidget(
+                            focusNode: emailfocusNode,
+                            controller: emailcontroller,
                           ),
                           SizedBox(height: elementPaddingVertical),
-                          PassWordTextfield(
-                            focusNode: passwordFocusNode,
-                            errorText: null,
-                            hintText: 'Enter Password',
-                            textEditingController: _passwordController,
+                          TextFieldWidget(
+                            focusNode: passwordfocusNode,
+                            controller: passwordcontroller,
                           ),
                           TextButton(
                             onPressed: () {
@@ -121,8 +114,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       const SizedBox(height: 10),
                       ColoredButton(
                         onPressed: () {
-                          final email = _emailController.text;
-                          final password = _passwordController.text;
+                          final email = emailcontroller.text;
+                          final password = passwordcontroller.text;
                           context.read<RegisterBloc>().add(
                               RegisterEvent.registerRequested(
                                   email: email, password: password));
@@ -153,7 +146,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Visibility(
-                      visible: false, // Change this to true to show the loading indicator
+                      visible:
+                          false, // Change this to true to show the loading indicator
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 30),
                         child: Container(
