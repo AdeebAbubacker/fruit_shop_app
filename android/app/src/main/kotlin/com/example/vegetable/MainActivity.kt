@@ -1,4 +1,4 @@
-package com.vegan.app
+package com.example.vegetable
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -42,7 +42,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyB0-lLNNr-Ixieb8l877Ysm0uxXlJ7XpfI',
-    appId: '1:354808192907:web:955252109aaa2010c2198e',
+    appId: '1:354808192907:web:921411efe9f534b9c2198e',
     messagingSenderId: '354808192907',
     projectId: 'up-homes-72ygjg',
     authDomain: 'up-homes-72ygjg-61fd9.firebaseapp.com',
@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBULX-lnVLNb0MVpw6qDmu73xSZHxJe0P8',
-    appId: '1:354808192907:android:2be6c5580a91597ec2198e',
+    appId: '1:354808192907:android:6bdf03744f3f72c3c2198e',
     messagingSenderId: '354808192907',
     projectId: 'up-homes-72ygjg',
     storageBucket: 'up-homes-72ygjg.appspot.com',
@@ -59,29 +59,28 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB5uE4_9rHE9p8YnpeSpw1HxKAWc4rkn-k',
-    appId: '1:354808192907:ios:762251d0744c885dc2198e',
+    appId: '1:354808192907:ios:65668186ff6bedd0c2198e',
     messagingSenderId: '354808192907',
     projectId: 'up-homes-72ygjg',
     storageBucket: 'up-homes-72ygjg.appspot.com',
-    iosBundleId: 'com.example.fruitShopApp',
+    iosBundleId: 'com.example.vegetable',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyB5uE4_9rHE9p8YnpeSpw1HxKAWc4rkn-k',
-    appId: '1:354808192907:ios:762251d0744c885dc2198e',
+    appId: '1:354808192907:ios:65668186ff6bedd0c2198e',
     messagingSenderId: '354808192907',
     projectId: 'up-homes-72ygjg',
     storageBucket: 'up-homes-72ygjg.appspot.com',
-    iosBundleId: 'com.example.fruitShopApp',
+    iosBundleId: 'com.example.vegetable',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyB0-lLNNr-Ixieb8l877Ysm0uxXlJ7XpfI',
-    appId: '1:354808192907:web:e15ea7597181dddcc2198e',
+    appId: '1:354808192907:web:abe794866e72cf14c2198e',
     messagingSenderId: '354808192907',
     projectId: 'up-homes-72ygjg',
     authDomain: 'up-homes-72ygjg-61fd9.firebaseapp.com',
     storageBucket: 'up-homes-72ygjg.appspot.com',
   );
-
 }
