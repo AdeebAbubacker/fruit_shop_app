@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
@@ -32,8 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double devicePadding = outerPadding(context);
-    double elementPaddingVertical = elemPaddingVertical(context);
+    
     double perc20 = screenHeight * 0.020;
     double perc187 = screenHeight * 0.0187;
     double perc281 = screenHeight * 0.0281;
@@ -49,9 +47,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           listener: (context, state) {
             state.maybeMap(
               registerSuccess: (value) {
+                print('register success');
+                print('register success${value}');
                 // Navigate to home screen
+                return Navigator.of(context).pop();
               },
               registerFailure: (value) {
+                print('register registerFailure');
+                print('register registerFailure${value}');
                 // Show error message
               },
               loading: (_) {
@@ -62,7 +65,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           },
           child: Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: devicePadding),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(
                 children: [
                   Column(
@@ -73,7 +76,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         child: Image.asset(
                           'assets/vegan.png',
                           fit: BoxFit.contain,
-                          color: Colors.red,
+                          color: Colors.green,
                         ),
                       ),
                       SizedBox(height: perc20),
@@ -93,11 +96,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFieldWidget(
                             focusNode: emailfocusNode,
                             controller: emailcontroller,
+                            hintText: 'Email',
                           ),
-                          SizedBox(height: elementPaddingVertical),
+                          SizedBox(height: 10),
                           TextFieldWidget(
                             focusNode: passwordfocusNode,
                             controller: passwordcontroller,
+                            hintText: 'Password',
                           ),
                           TextButton(
                             onPressed: () {

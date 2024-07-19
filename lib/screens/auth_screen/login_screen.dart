@@ -32,9 +32,13 @@ class _SignInScreenState extends State<SignInScreen> {
           listener: (context, state) {
             state.maybeMap(
               loginSuccess: (value) {
+                print('success');
+                print('----------${value}');
                 // Navigate to home screen
+                return navigateToMainScreen(context);
               },
               loginFailure: (value) {
+                print('----------${value}');
                 // Show error message
               },
               loading: (_) {
@@ -56,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Image.asset(
                           'assets/vegan.png',
                           fit: BoxFit.contain,
-                          color: Colors.red,
+                          color: Colors.green,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -76,11 +80,13 @@ class _SignInScreenState extends State<SignInScreen> {
                           TextFieldWidget(
                             focusNode: emailfocusNode,
                             controller: emailcontroller,
+                            hintText: 'Email',
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           TextFieldWidget(
                             focusNode: passwordfocusNode,
                             controller: passwordcontroller,
+                            hintText: 'Password',
                           ),
                           TextButton(
                             onPressed: () {
@@ -141,7 +147,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: JumpingDots(
-                            color: const Color.fromARGB(210, 255, 109, 111),
+                            color: Color.fromARGB(210, 109, 255, 143),
                           ),
                         ),
                       ),

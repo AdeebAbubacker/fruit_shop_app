@@ -8,4 +8,10 @@ void navigateToSiginIn(
 void navigateToRegister(
   BuildContext context,
 ) =>
-    Navigator.of(context).pushNamed('/register');    
+    Navigator.of(context).pushNamed('/register');
+
+void navigateToMainScreen(BuildContext context) {
+  Navigator.of(context).pushNamed(
+    '/mainScreen',
+  );
+}

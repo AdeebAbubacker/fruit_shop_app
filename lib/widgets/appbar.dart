@@ -29,7 +29,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     final screenwidth = screenWidth(context);
-   
+
     final paddingw20 = screenwidth * 20 / FigmaConstants.figmaDeviceWidth;
 
     return Visibility(
@@ -98,7 +98,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
                 height: 33,
                 fit: BoxFit
                     .contain, // Maintain aspect ratio while fitting the image within the box
-                color: Colors.red,
+                color: Colors.green,
               ),
             ),
             const Spacer(),

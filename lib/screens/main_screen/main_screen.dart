@@ -5,7 +5,6 @@ import 'package:fruit_shop_app/screens/main_screen/sub_screen/explore/explore_wi
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -59,11 +58,11 @@ class _MainScreenState extends State<MainScreen> {
                   child: _selectedIndex == 0
                       ? Image.asset(
                           'assets/bottom_nav/home.png',
-                          color: Colors.red,
+                          color: Colors.black,
                         )
                       : Image.asset(
                           'assets/bottom_nav/home.png',
-                          color: const Color.fromARGB(255, 97, 96, 96),
+                          color: Color.fromARGB(255, 139, 138, 138),
                         )),
               label: 'Home',
             ),
@@ -74,7 +73,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 1
                     ? Image.asset(
                         'assets/bottom_nav/search.png',
-                        color: Colors.red,
+                        color: Colors.black,
                       )
                     : Image.asset(
                         'assets/bottom_nav/search.png',
@@ -90,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 2
                     ? Image.asset(
                         'assets/bottom_nav/favourite.png',
-                        color: Colors.red,
+                        color: Colors.black,
                       )
                     : Image.asset(
                         'assets/bottom_nav/favourite.png',
@@ -106,7 +105,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 3
                     ? Image.asset(
                         'assets/bottom_nav/cart.png',
-                        color: Colors.red,
+                        color: Colors.black,
                       )
                     : Image.asset(
                         'assets/bottom_nav/cart.png',
@@ -117,7 +116,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red,
+          selectedItemColor: Colors.black,
           onTap: _onItemTapped,
         ),
       ),

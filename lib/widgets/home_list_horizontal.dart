@@ -8,6 +8,7 @@ class HomeListHorizontalItem extends StatelessWidget {
     return SizedBox(
       height: 220, // Give a fixed height
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 20,
         padding: EdgeInsets.symmetric(horizontal: 10),

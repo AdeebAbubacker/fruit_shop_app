@@ -5,10 +5,12 @@ import 'package:fruit_shop_app/core/constants/text_styles.dart';
 class TextFieldWidget extends StatelessWidget {
   final FocusNode focusNode;
   final TextEditingController controller;
+  final String hintText;
   const TextFieldWidget({
     super.key,
     required this.controller,
     required this.focusNode,
+    required this.hintText,
   });
 
   @override
@@ -22,10 +24,10 @@ class TextFieldWidget extends StatelessWidget {
           focusNode: focusNode,
           controller: controller,
           style: TextStyles.rubikregular16black24w400,
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            hintText: null,
-            border: OutlineInputBorder(
+          decoration:  InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            hintText: hintText,
+            border: const OutlineInputBorder(
               borderSide: BorderSide(
                 width: 4,
                 color: Colors.red,
