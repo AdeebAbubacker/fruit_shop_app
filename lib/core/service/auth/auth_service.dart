@@ -61,4 +61,12 @@ class AuthService {
       return Left(false);
     }
   }
+   Future<Either<bool, bool>> logout() async {
+    try {
+      await _firebaseAuth.signOut();
+      return const Right(true);
+    } catch (e) {
+      return Left(false);
+    }
+  }
 }
