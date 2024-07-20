@@ -5,7 +5,7 @@ import 'package:fruit_shop_app/core/view_model/bloc/logout_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/checklogin/check_login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
-import 'package:fruit_shop_app/it/post_offer.dart';
+import 'package:fruit_shop_app/testing/it/post_offer.dart';
 import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) =>  PostItem(),
+          '/': (context) =>  SplashScreen(),
           '/sigin': (context) => SignInScreen(),
           '/register': (context) =>
               RegistrationScreen(), // Pass the actual item map
