@@ -12,6 +12,6 @@ void navigateToRegister(
 
 void navigateToMainScreen(BuildContext context) {
   Navigator.of(context).pushNamed(
-    '/mainScreen',
+    '/mainscreen',
   );
 }
