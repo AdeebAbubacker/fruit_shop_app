@@ -78,6 +78,9 @@ flutter:
     - assets/bottom_nav/
     - assets/app_bar/
     - assets/animations/
+    - assets/slider/
+    - assets/static banner/
+
  
   #   - images/a_dot_ham.jpeg
 

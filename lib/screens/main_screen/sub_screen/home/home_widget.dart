@@ -18,11 +18,11 @@ class HomeWidget extends StatelessWidget {
             const SizedBox(height: 30),
             const CarouselWidget(
               imgList: [
-                'https://via.placeholder.com/600x400/FF0000/FFFFFF?text=Image1',
-                'https://via.placeholder.com/600x400/00FF00/FFFFFF?text=Image2',
-                'https://via.placeholder.com/600x400/0000FF/FFFFFF?text=Image3',
-                'https://via.placeholder.com/600x400/FFFF00/FFFFFF?text=Image4',
-                'https://via.placeholder.com/600x400/FF00FF/FFFFFF?text=Image5',
+                'assets/slider/cashback.png',
+                'assets/slider/coconut.png',
+                'assets/slider/farmfresh.png',
+                'assets/slider/mango.png',
+                'assets/slider/monsoon.png'
               ],
             ),
             const SizedBox(height: 20),

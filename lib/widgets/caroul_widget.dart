@@ -14,10 +14,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
 
   List<Widget> generateImageTiles() {
     return widget.imgList
-        .map((element) => ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(element, fit: BoxFit.cover, width: 1000),
-            ))
+        .map((element) => Padding(
+          padding: const EdgeInsets.only(right: 5),
+          child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Image.asset(element, fit: BoxFit.cover, width: 1000),
+              ),
+        ))
         .toList();
   }
 
@@ -28,7 +31,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
         CarouselSlider(
           items: generateImageTiles(),
           options: CarouselOptions(
-            
+            scrollPhysics: BouncingScrollPhysics(),
             autoPlay: true,
             enlargeCenterPage: false,
             viewportFraction: 1.0,
@@ -51,7 +54,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               return Container(
                 width: 8.0,
                 height: 8.0,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
