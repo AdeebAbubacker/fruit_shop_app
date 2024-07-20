@@ -4,7 +4,7 @@ Future<void> fetchData() async {
   try {
     // Reference to the Firestore collection 'adeeb'
     CollectionReference collection =
-        FirebaseFirestore.instance.collection('Flash deal');
+        FirebaseFirestore.instance.collection('items');
 
     // Get the data from the collection
     QuerySnapshot querySnapshot = await collection.get();
@@ -20,30 +20,43 @@ Future<void> fetchData() async {
 
 Future<void> updateProducts({
   required String name,
-  required String price,
-  required String description,
+  required String realPrice,
+  required String discountPrice,
   required String imageUrl,
-  required String category,
 }) async {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  DocumentReference userRef = _db.collection('Flash deal').doc();
+  DocumentReference userRef = _db.collection('items').doc();
 
   return userRef.set({
     'name': name,
-    'price': price,
-    'description': description,
+    'realPrice': realPrice,
+    'discountPrice': discountPrice,
+    'description': 'Fresh Item',
     'imageUrl': imageUrl,
-    'category': category
+    'offer': '20',
+    'isCitrus': false,
+    'isReadyToEat': false,
+    'isBeatTheHeat': false,
+    'isCheckThisOut': false,
+    'isEveryDayEssential': false,
+    'isSummerFruit': false,
+    'isDealofTheDay': false,
+    'isExoticFruit': false,
+    'isExoticVegetable': false,
+    'isFreshFruit': false,
+    'isFreshMangoes': false,
+    'isFreshVegetables': false,
+    'isLeafs_Herbs': false,
   }, SetOptions(merge: true));
 }
-
-
 
 class HomeScreenService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<List<Map<String, dynamic>>> getItems() async {
-    QuerySnapshot snapshot = await _db.collection('Flash deal').get();
-    return snapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+    QuerySnapshot snapshot = await _db.collection('items').get();
+    return snapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
   }
 }

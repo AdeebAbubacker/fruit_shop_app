@@ -38,7 +38,7 @@ class HomeWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      "Flash Deal - Lowest Price guaranteed",
+                      "items - Lowest Price guaranteed",
                       style: TextStyles.rubik14black33,
                     ),
                   ],
