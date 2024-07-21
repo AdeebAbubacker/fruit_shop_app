@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/routes/app_route.dart';
-import 'package:fruit_shop_app/core/view_model/bloc/logout_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 
 class LogoutSCreen extends StatelessWidget {
   const LogoutSCreen({super.key});

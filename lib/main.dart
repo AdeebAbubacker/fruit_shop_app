@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
-import 'package:fruit_shop_app/core/view_model/bloc/logout_bloc.dart';
+import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
+import 'package:fruit_shop_app/core/view_model/homescreen/homescreen_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/checklogin/check_login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
+import 'package:fruit_shop_app/testing/it/fetch_offer.dart';
 import 'package:fruit_shop_app/testing/it/post_offer.dart';
 import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,6 +53,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => LogoutBloc(AuthService(FirebaseAuth.instance)),
         ),
+        BlocProvider(
+          create: (context) => HomescreenBloc(HomeScreenService()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -59,8 +65,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) =>  SplashScreen(),
-          '/sigin': (context) => SignInScreen(),
+          '/': (context) => FetchData(),
+          '/sigin': (context) => FetchData(),
           '/register': (context) =>
               RegistrationScreen(), // Pass the actual item map
           '/mainscreen': (context) => MainScreen(),
