@@ -43,7 +43,7 @@ class HomeWidget extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       "items - Lowest Price guaranteed",
-                      style: TextStyles.rubik14black33,
+                      style: TextStyles.rubik15black33,
                     ),
                   ],
                 ),
@@ -63,7 +63,7 @@ class HomeWidget extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       "Deal of the day",
-                      style: TextStyles.rubik14black33,
+                      style: TextStyles.rubik15black33,
                     ),
                   ],
                 ),
@@ -80,12 +80,12 @@ class HomeWidget extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       "Most favourite",
-                      style: TextStyles.rubik14black33,
+                      style: TextStyles.rubik15black33,
                     ),
                   ],
                 ),
                 const SizedBox(height: 5),
-               const HomeListExoticfruit(),
+                const HomeListExoticfruit(),
                 const SizedBox(height: 20),
                 StaticBanner(
                   image: 'assets/static banner/static banner 1.png',
@@ -100,7 +100,7 @@ class HomeWidget extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       "Summer land",
-                      style: TextStyles.rubik14black33,
+                      style: TextStyles.rubik15black33,
                     ),
                   ],
                 ),

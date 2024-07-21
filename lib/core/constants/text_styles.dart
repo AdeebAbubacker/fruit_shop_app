@@ -246,7 +246,7 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: const Color(0xFF242424),
   );
-    static final TextStyle rubik16black24w2700 = regular.copyWith(
+  static final TextStyle rubik16black24w2700 = regular.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w700,
     color: const Color(0xFF242424),
@@ -281,7 +281,7 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: const Color(0xFFFFFFFF),
   );
-    static final TextStyle rubik12whiteFFw500 = regular.copyWith(
+  static final TextStyle rubik12whiteFFw500 = regular.copyWith(
     fontSize: 12,
     fontWeight: FontWeight.w500,
     color: const Color(0xFFFFFFFF),
@@ -471,6 +471,11 @@ class TextStyles {
     color: const Color(0xFF333333),
   );
 
+  static final TextStyle rubik15black33 = regular.copyWith(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    color: const Color(0xFF333333),
+  );
   static final TextStyle rubik12greenBD00 = regular.copyWith(
     fontSize: 12,
     fontWeight: FontWeight.w300,
