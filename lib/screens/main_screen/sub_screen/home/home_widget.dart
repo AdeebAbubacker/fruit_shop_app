@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/widgets/caroul_widget.dart';
-import 'package:fruit_shop_app/widgets/home_list_horizontal.dart';
+import 'package:fruit_shop_app/widgets/home_list_check_item.dart';
+import 'package:fruit_shop_app/widgets/home_list_deal_today.dart';
+import 'package:fruit_shop_app/widgets/home_list_exotic_fruit.dart';
+import 'package:fruit_shop_app/widgets/home_list_veryday_essential.dart';
+import 'package:fruit_shop_app/widgets/home_list_lowest_price.dart';
 import 'package:fruit_shop_app/widgets/static_banner.dart';
 import 'package:fruit_shop_app/widgets/static_bottom_banner.dart';
 
@@ -44,7 +48,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListHorizontalItem(),
+                const HomeListLowestPrice(),
                 const SizedBox(height: 20),
                 StaticBanner(
                   image: 'assets/static banner/static banner 1.png',
@@ -64,7 +68,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListHorizontalItem(),
+                const HomeListDealToday(),
                 const SizedBox(height: 20),
                 const SizedBox(height: 20),
                 Row(
@@ -81,7 +85,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListHorizontalItem(),
+               const HomeListExoticfruit(),
                 const SizedBox(height: 20),
                 StaticBanner(
                   image: 'assets/static banner/static banner 1.png',
@@ -101,7 +105,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListHorizontalItem(),
+                const HomeListExoticfruit(),
                 const SizedBox(height: 20),
               ],
             ),

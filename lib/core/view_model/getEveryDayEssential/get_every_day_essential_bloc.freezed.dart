@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'homescreen_bloc.dart';
+part of 'get_every_day_essential_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,59 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomescreenEvent {
+mixin _$GetEveryDayEssentialEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getEssentialItems,
+    required TResult Function() getEveryDayEssential,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getEssentialItems,
+    TResult? Function()? getEveryDayEssential,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getEssentialItems,
+    TResult Function()? getEveryDayEssential,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetEssentialItems value) getEssentialItems,
+    required TResult Function(_GetEveryDayEssential value) getEveryDayEssential,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetEssentialItems value)? getEssentialItems,
+    TResult? Function(_GetEveryDayEssential value)? getEveryDayEssential,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetEssentialItems value)? getEssentialItems,
+    TResult Function(_GetEveryDayEssential value)? getEveryDayEssential,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomescreenEventCopyWith<$Res> {
-  factory $HomescreenEventCopyWith(
-          HomescreenEvent value, $Res Function(HomescreenEvent) then) =
-      _$HomescreenEventCopyWithImpl<$Res, HomescreenEvent>;
+abstract class $GetEveryDayEssentialEventCopyWith<$Res> {
+  factory $GetEveryDayEssentialEventCopyWith(GetEveryDayEssentialEvent value,
+          $Res Function(GetEveryDayEssentialEvent) then) =
+      _$GetEveryDayEssentialEventCopyWithImpl<$Res, GetEveryDayEssentialEvent>;
 }
 
 /// @nodoc
-class _$HomescreenEventCopyWithImpl<$Res, $Val extends HomescreenEvent>
-    implements $HomescreenEventCopyWith<$Res> {
-  _$HomescreenEventCopyWithImpl(this._value, this._then);
+class _$GetEveryDayEssentialEventCopyWithImpl<$Res,
+        $Val extends GetEveryDayEssentialEvent>
+    implements $GetEveryDayEssentialEventCopyWith<$Res> {
+  _$GetEveryDayEssentialEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +84,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$HomescreenEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$GetEveryDayEssentialEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +98,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'HomescreenEvent.started()';
+    return 'GetEveryDayEssentialEvent.started()';
   }
 
   @override
@@ -113,7 +114,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getEssentialItems,
+    required TResult Function() getEveryDayEssential,
   }) {
     return started();
   }
@@ -122,7 +123,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getEssentialItems,
+    TResult? Function()? getEveryDayEssential,
   }) {
     return started?.call();
   }
@@ -131,7 +132,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getEssentialItems,
+    TResult Function()? getEveryDayEssential,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +145,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetEssentialItems value) getEssentialItems,
+    required TResult Function(_GetEveryDayEssential value) getEveryDayEssential,
   }) {
     return started(this);
   }
@@ -153,7 +154,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetEssentialItems value)? getEssentialItems,
+    TResult? Function(_GetEveryDayEssential value)? getEveryDayEssential,
   }) {
     return started?.call(this);
   }
@@ -162,7 +163,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetEssentialItems value)? getEssentialItems,
+    TResult Function(_GetEveryDayEssential value)? getEveryDayEssential,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,40 +173,42 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements HomescreenEvent {
+abstract class _Started implements GetEveryDayEssentialEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetEssentialItemsImplCopyWith<$Res> {
-  factory _$$GetEssentialItemsImplCopyWith(_$GetEssentialItemsImpl value,
-          $Res Function(_$GetEssentialItemsImpl) then) =
-      __$$GetEssentialItemsImplCopyWithImpl<$Res>;
+abstract class _$$GetEveryDayEssentialImplCopyWith<$Res> {
+  factory _$$GetEveryDayEssentialImplCopyWith(_$GetEveryDayEssentialImpl value,
+          $Res Function(_$GetEveryDayEssentialImpl) then) =
+      __$$GetEveryDayEssentialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetEssentialItemsImplCopyWithImpl<$Res>
-    extends _$HomescreenEventCopyWithImpl<$Res, _$GetEssentialItemsImpl>
-    implements _$$GetEssentialItemsImplCopyWith<$Res> {
-  __$$GetEssentialItemsImplCopyWithImpl(_$GetEssentialItemsImpl _value,
-      $Res Function(_$GetEssentialItemsImpl) _then)
+class __$$GetEveryDayEssentialImplCopyWithImpl<$Res>
+    extends _$GetEveryDayEssentialEventCopyWithImpl<$Res,
+        _$GetEveryDayEssentialImpl>
+    implements _$$GetEveryDayEssentialImplCopyWith<$Res> {
+  __$$GetEveryDayEssentialImplCopyWithImpl(_$GetEveryDayEssentialImpl _value,
+      $Res Function(_$GetEveryDayEssentialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetEssentialItemsImpl implements _GetEssentialItems {
-  const _$GetEssentialItemsImpl();
+class _$GetEveryDayEssentialImpl implements _GetEveryDayEssential {
+  const _$GetEveryDayEssentialImpl();
 
   @override
   String toString() {
-    return 'HomescreenEvent.getEssentialItems()';
+    return 'GetEveryDayEssentialEvent.getEveryDayEssential()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetEssentialItemsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetEveryDayEssentialImpl);
   }
 
   @override
@@ -215,29 +218,29 @@ class _$GetEssentialItemsImpl implements _GetEssentialItems {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getEssentialItems,
+    required TResult Function() getEveryDayEssential,
   }) {
-    return getEssentialItems();
+    return getEveryDayEssential();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getEssentialItems,
+    TResult? Function()? getEveryDayEssential,
   }) {
-    return getEssentialItems?.call();
+    return getEveryDayEssential?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getEssentialItems,
+    TResult Function()? getEveryDayEssential,
     required TResult orElse(),
   }) {
-    if (getEssentialItems != null) {
-      return getEssentialItems();
+    if (getEveryDayEssential != null) {
+      return getEveryDayEssential();
     }
     return orElse();
   }
@@ -246,40 +249,40 @@ class _$GetEssentialItemsImpl implements _GetEssentialItems {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetEssentialItems value) getEssentialItems,
+    required TResult Function(_GetEveryDayEssential value) getEveryDayEssential,
   }) {
-    return getEssentialItems(this);
+    return getEveryDayEssential(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetEssentialItems value)? getEssentialItems,
+    TResult? Function(_GetEveryDayEssential value)? getEveryDayEssential,
   }) {
-    return getEssentialItems?.call(this);
+    return getEveryDayEssential?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetEssentialItems value)? getEssentialItems,
+    TResult Function(_GetEveryDayEssential value)? getEveryDayEssential,
     required TResult orElse(),
   }) {
-    if (getEssentialItems != null) {
-      return getEssentialItems(this);
+    if (getEveryDayEssential != null) {
+      return getEveryDayEssential(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetEssentialItems implements HomescreenEvent {
-  const factory _GetEssentialItems() = _$GetEssentialItemsImpl;
+abstract class _GetEveryDayEssential implements GetEveryDayEssentialEvent {
+  const factory _GetEveryDayEssential() = _$GetEveryDayEssentialImpl;
 }
 
 /// @nodoc
-mixin _$HomescreenState {
+mixin _$GetEveryDayEssentialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -309,40 +312,41 @@ mixin _$HomescreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_DataLoaded value) dataLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(_GetEveryDayEssentialLoaded value) dataLoaded,
+    required TResult Function(GetEveryDayEssentialError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_DataLoaded value)? dataLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult? Function(GetEveryDayEssentialError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_DataLoaded value)? dataLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult Function(GetEveryDayEssentialError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomescreenStateCopyWith<$Res> {
-  factory $HomescreenStateCopyWith(
-          HomescreenState value, $Res Function(HomescreenState) then) =
-      _$HomescreenStateCopyWithImpl<$Res, HomescreenState>;
+abstract class $GetEveryDayEssentialStateCopyWith<$Res> {
+  factory $GetEveryDayEssentialStateCopyWith(GetEveryDayEssentialState value,
+          $Res Function(GetEveryDayEssentialState) then) =
+      _$GetEveryDayEssentialStateCopyWithImpl<$Res, GetEveryDayEssentialState>;
 }
 
 /// @nodoc
-class _$HomescreenStateCopyWithImpl<$Res, $Val extends HomescreenState>
-    implements $HomescreenStateCopyWith<$Res> {
-  _$HomescreenStateCopyWithImpl(this._value, this._then);
+class _$GetEveryDayEssentialStateCopyWithImpl<$Res,
+        $Val extends GetEveryDayEssentialState>
+    implements $GetEveryDayEssentialStateCopyWith<$Res> {
+  _$GetEveryDayEssentialStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +363,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomescreenStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$GetEveryDayEssentialStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +377,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomescreenState.initial()';
+    return 'GetEveryDayEssentialState.initial()';
   }
 
   @override
@@ -427,8 +431,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_DataLoaded value) dataLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(_GetEveryDayEssentialLoaded value) dataLoaded,
+    required TResult Function(GetEveryDayEssentialError value) error,
   }) {
     return initial(this);
   }
@@ -438,8 +442,8 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_DataLoaded value)? dataLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult? Function(GetEveryDayEssentialError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -449,8 +453,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_DataLoaded value)? dataLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult Function(GetEveryDayEssentialError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -460,7 +464,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements HomescreenState {
+abstract class _Initial implements GetEveryDayEssentialState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -473,7 +477,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$HomescreenStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$GetEveryDayEssentialStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +491,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'HomescreenState.loading()';
+    return 'GetEveryDayEssentialState.loading()';
   }
 
   @override
@@ -541,8 +545,8 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_DataLoaded value) dataLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(_GetEveryDayEssentialLoaded value) dataLoaded,
+    required TResult Function(GetEveryDayEssentialError value) error,
   }) {
     return loading(this);
   }
@@ -552,8 +556,8 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_DataLoaded value)? dataLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult? Function(GetEveryDayEssentialError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -563,8 +567,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_DataLoaded value)? dataLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult Function(GetEveryDayEssentialError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -574,25 +578,28 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements HomescreenState {
+abstract class _Loading implements GetEveryDayEssentialState {
   const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$DataLoadedImplCopyWith<$Res> {
-  factory _$$DataLoadedImplCopyWith(
-          _$DataLoadedImpl value, $Res Function(_$DataLoadedImpl) then) =
-      __$$DataLoadedImplCopyWithImpl<$Res>;
+abstract class _$$GetEveryDayEssentialLoadedImplCopyWith<$Res> {
+  factory _$$GetEveryDayEssentialLoadedImplCopyWith(
+          _$GetEveryDayEssentialLoadedImpl value,
+          $Res Function(_$GetEveryDayEssentialLoadedImpl) then) =
+      __$$GetEveryDayEssentialLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Item> items});
 }
 
 /// @nodoc
-class __$$DataLoadedImplCopyWithImpl<$Res>
-    extends _$HomescreenStateCopyWithImpl<$Res, _$DataLoadedImpl>
-    implements _$$DataLoadedImplCopyWith<$Res> {
-  __$$DataLoadedImplCopyWithImpl(
-      _$DataLoadedImpl _value, $Res Function(_$DataLoadedImpl) _then)
+class __$$GetEveryDayEssentialLoadedImplCopyWithImpl<$Res>
+    extends _$GetEveryDayEssentialStateCopyWithImpl<$Res,
+        _$GetEveryDayEssentialLoadedImpl>
+    implements _$$GetEveryDayEssentialLoadedImplCopyWith<$Res> {
+  __$$GetEveryDayEssentialLoadedImplCopyWithImpl(
+      _$GetEveryDayEssentialLoadedImpl _value,
+      $Res Function(_$GetEveryDayEssentialLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -600,7 +607,7 @@ class __$$DataLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$DataLoadedImpl(
+    return _then(_$GetEveryDayEssentialLoadedImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -611,8 +618,9 @@ class __$$DataLoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DataLoadedImpl implements _DataLoaded {
-  const _$DataLoadedImpl({required final List<Item> items}) : _items = items;
+class _$GetEveryDayEssentialLoadedImpl implements _GetEveryDayEssentialLoaded {
+  const _$GetEveryDayEssentialLoadedImpl({required final List<Item> items})
+      : _items = items;
 
   final List<Item> _items;
   @override
@@ -624,14 +632,14 @@ class _$DataLoadedImpl implements _DataLoaded {
 
   @override
   String toString() {
-    return 'HomescreenState.dataLoaded(items: $items)';
+    return 'GetEveryDayEssentialState.dataLoaded(items: $items)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataLoadedImpl &&
+            other is _$GetEveryDayEssentialLoadedImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -642,8 +650,9 @@ class _$DataLoadedImpl implements _DataLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataLoadedImplCopyWith<_$DataLoadedImpl> get copyWith =>
-      __$$DataLoadedImplCopyWithImpl<_$DataLoadedImpl>(this, _$identity);
+  _$$GetEveryDayEssentialLoadedImplCopyWith<_$GetEveryDayEssentialLoadedImpl>
+      get copyWith => __$$GetEveryDayEssentialLoadedImplCopyWithImpl<
+          _$GetEveryDayEssentialLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -687,8 +696,8 @@ class _$DataLoadedImpl implements _DataLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_DataLoaded value) dataLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(_GetEveryDayEssentialLoaded value) dataLoaded,
+    required TResult Function(GetEveryDayEssentialError value) error,
   }) {
     return dataLoaded(this);
   }
@@ -698,8 +707,8 @@ class _$DataLoadedImpl implements _DataLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_DataLoaded value)? dataLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult? Function(GetEveryDayEssentialError value)? error,
   }) {
     return dataLoaded?.call(this);
   }
@@ -709,8 +718,8 @@ class _$DataLoadedImpl implements _DataLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_DataLoaded value)? dataLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult Function(GetEveryDayEssentialError value)? error,
     required TResult orElse(),
   }) {
     if (dataLoaded != null) {
@@ -720,31 +729,35 @@ class _$DataLoadedImpl implements _DataLoaded {
   }
 }
 
-abstract class _DataLoaded implements HomescreenState {
-  const factory _DataLoaded({required final List<Item> items}) =
-      _$DataLoadedImpl;
+abstract class _GetEveryDayEssentialLoaded
+    implements GetEveryDayEssentialState {
+  const factory _GetEveryDayEssentialLoaded({required final List<Item> items}) =
+      _$GetEveryDayEssentialLoadedImpl;
 
   List<Item> get items;
   @JsonKey(ignore: true)
-  _$$DataLoadedImplCopyWith<_$DataLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetEveryDayEssentialLoadedImplCopyWith<_$GetEveryDayEssentialLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$GetEveryDayEssentialErrorImplCopyWith<$Res> {
+  factory _$$GetEveryDayEssentialErrorImplCopyWith(
+          _$GetEveryDayEssentialErrorImpl value,
+          $Res Function(_$GetEveryDayEssentialErrorImpl) then) =
+      __$$GetEveryDayEssentialErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool error});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$HomescreenStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$GetEveryDayEssentialErrorImplCopyWithImpl<$Res>
+    extends _$GetEveryDayEssentialStateCopyWithImpl<$Res,
+        _$GetEveryDayEssentialErrorImpl>
+    implements _$$GetEveryDayEssentialErrorImplCopyWith<$Res> {
+  __$$GetEveryDayEssentialErrorImplCopyWithImpl(
+      _$GetEveryDayEssentialErrorImpl _value,
+      $Res Function(_$GetEveryDayEssentialErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -752,7 +765,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$GetEveryDayEssentialErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -763,22 +776,22 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements Error {
-  const _$ErrorImpl({required this.error});
+class _$GetEveryDayEssentialErrorImpl implements GetEveryDayEssentialError {
+  const _$GetEveryDayEssentialErrorImpl({required this.error});
 
   @override
   final bool error;
 
   @override
   String toString() {
-    return 'HomescreenState.error(error: $error)';
+    return 'GetEveryDayEssentialState.error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$GetEveryDayEssentialErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -788,8 +801,9 @@ class _$ErrorImpl implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$GetEveryDayEssentialErrorImplCopyWith<_$GetEveryDayEssentialErrorImpl>
+      get copyWith => __$$GetEveryDayEssentialErrorImplCopyWithImpl<
+          _$GetEveryDayEssentialErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -833,8 +847,8 @@ class _$ErrorImpl implements Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_DataLoaded value) dataLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(_GetEveryDayEssentialLoaded value) dataLoaded,
+    required TResult Function(GetEveryDayEssentialError value) error,
   }) {
     return error(this);
   }
@@ -844,8 +858,8 @@ class _$ErrorImpl implements Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_DataLoaded value)? dataLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult? Function(GetEveryDayEssentialError value)? error,
   }) {
     return error?.call(this);
   }
@@ -855,8 +869,8 @@ class _$ErrorImpl implements Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_DataLoaded value)? dataLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(_GetEveryDayEssentialLoaded value)? dataLoaded,
+    TResult Function(GetEveryDayEssentialError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -866,11 +880,12 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements HomescreenState {
-  const factory Error({required final bool error}) = _$ErrorImpl;
+abstract class GetEveryDayEssentialError implements GetEveryDayEssentialState {
+  const factory GetEveryDayEssentialError({required final bool error}) =
+      _$GetEveryDayEssentialErrorImpl;
 
   bool get error;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GetEveryDayEssentialErrorImplCopyWith<_$GetEveryDayEssentialErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

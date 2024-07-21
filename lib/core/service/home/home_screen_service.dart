@@ -12,7 +12,83 @@ class HomeScreenService {
   //       .toList();
   // }
 
- Future<Either<bool, List<Item>>> getEssentialItems() async {
+  Future<Either<bool, List<Item>>> getEssentialItems() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isEveryDayEssential', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+  Future<Either<bool, List<Item>>> getDealofTheDay() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isDealofTheDay', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+  Future<Either<bool, List<Item>>> getCheckThisItem() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isCheckThisOut', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+  Future<Either<bool, List<Item>>> getExoticfruit() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isExoticFruit', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+  Future<Either<bool, List<Item>>> getEveryDayEssential() async {
     try {
       QuerySnapshot snapshot = await _db
           .collection('items')
@@ -31,6 +107,10 @@ class HomeScreenService {
     }
   }
 }
+
+
+
+
 
 // class HomeService {
 //   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

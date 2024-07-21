@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
 import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
-import 'package:fruit_shop_app/core/view_model/homescreen/homescreen_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getCheckThisItem/get_check_thisitem_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getEveryDayEssential/get_every_day_essential_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getExoticFruit/get_exotic_fruit_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/checklogin/check_login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
@@ -53,8 +56,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => LogoutBloc(AuthService(FirebaseAuth.instance)),
         ),
-        BlocProvider(
-          create: (context) => HomescreenBloc(HomeScreenService()),
+       
+         BlocProvider(
+          create: (context) => GetCheckThisitemBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetDealofTheDayBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetEveryDayEssentialBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetExoticFruitBloc(HomeScreenService()),
         ),
       ],
       child: MaterialApp(
@@ -65,8 +78,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => FetchData(),
-          '/sigin': (context) => FetchData(),
+          '/': (context) => SplashScreen(),
+          '/sigin': (context) => SignInScreen(),
           '/register': (context) =>
               RegistrationScreen(), // Pass the actual item map
           '/mainscreen': (context) => MainScreen(),
