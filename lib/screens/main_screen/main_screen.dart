@@ -59,11 +59,11 @@ class _MainScreenState extends State<MainScreen> {
                   child: _selectedIndex == 0
                       ? Image.asset(
                           'assets/bottom_nav/home.png',
-                          color: Colors.black,
+                          color: Colors.green,
                         )
                       : Image.asset(
                           'assets/bottom_nav/home.png',
-                          color: Color.fromARGB(255, 139, 138, 138),
+                          color: Colors.grey,
                         )),
               label: 'Home',
             ),
@@ -74,11 +74,11 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 1
                     ? Image.asset(
                         'assets/bottom_nav/search.png',
-                        color: Colors.black,
+                        color: Colors.green,
                       )
                     : Image.asset(
                         'assets/bottom_nav/search.png',
-                        color: const Color.fromARGB(255, 97, 96, 96),
+                        color:  Colors.grey,
                       ),
               ),
               label: 'Search',
@@ -90,11 +90,11 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 2
                     ? Image.asset(
                         'assets/bottom_nav/favourite.png',
-                        color: Colors.black,
+                        color: Colors.green,
                       )
                     : Image.asset(
                         'assets/bottom_nav/favourite.png',
-                        color: const Color.fromARGB(255, 97, 96, 96),
+                        color:  Colors.grey,
                       ),
               ),
               label: 'Favourite',
@@ -106,18 +106,18 @@ class _MainScreenState extends State<MainScreen> {
                 child: _selectedIndex == 3
                     ? Image.asset(
                         'assets/bottom_nav/cart.png',
-                        color: Colors.black,
+                        color: Colors.green,
                       )
                     : Image.asset(
                         'assets/bottom_nav/cart.png',
-                        color: const Color.fromARGB(255, 97, 96, 96),
+                        color:  Colors.grey,
                       ),
               ),
               label: 'Cart',
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.black,
+          selectedItemColor: Colors.green,
           onTap: _onItemTapped,
         ),
       ),
