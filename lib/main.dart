@@ -10,6 +10,7 @@ import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/checklogin/check_login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
+import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 import 'package:fruit_shop_app/testing/it/fetch_offer.dart';
 import 'package:fruit_shop_app/testing/it/post_offer.dart';
 import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
@@ -18,12 +19,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
-import 'package:fruit_shop_app/testing/testing_cart.dart';
-import 'package:fruit_shop_app/testing/testing_item.dart';
-import 'package:fruit_shop_app/testing/testing_order.dart';
-import 'package:fruit_shop_app/testing/testing_screen.dart';
-import 'package:fruit_shop_app/testing/testing_vieworder.dart';
-
 import 'firebase_options.dart';
 
 void main() async {
@@ -78,11 +73,12 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => SplashScreen(),
-          '/sigin': (context) => SignInScreen(),
+          '/': (context) => const SplashScreen(),
+          '/sigin': (context) => const SignInScreen(),
           '/register': (context) =>
-              RegistrationScreen(), // Pass the actual item map
-          '/mainscreen': (context) => MainScreen(),
+              const RegistrationScreen(), // Pass the actual item map
+          '/mainscreen': (context) => const MainScreen(),
+          '/item': (context) =>  ViewItemScreen(),
         },
       ),
     );
