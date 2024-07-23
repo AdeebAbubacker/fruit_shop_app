@@ -6,5 +6,6 @@ class RegisterEvent with _$RegisterEvent {
   const factory RegisterEvent.registerRequested({
     required String email,
     required String password,
+    required String name,
   }) = _RegisterEvent;
 }

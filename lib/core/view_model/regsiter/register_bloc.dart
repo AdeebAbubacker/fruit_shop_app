@@ -14,7 +14,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       emit(const RegisterState.loading());
 
       try {
-        final result = await authService.register(event.email, event.password);
+        final result = await authService.register(
+          event.email,
+          event.password,
+          event.name,
+        );
 
         await result.fold((failure) async {
           emit(RegisterState.registerFailure(error: failure.toString()));

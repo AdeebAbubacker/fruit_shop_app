@@ -25,16 +25,18 @@ class AuthService {
     }
   }
 
-  Future<Either<String, User?>> register(String email, String password) async {
+  Future<Either<String, User?>> register(
+      String email, String password, String name) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
+        
       );
       User? user = userCredential.user;
       if (user != null) {
-        await _updateUserData(user);
+        await _updateUserData(user, name: name);
       }
       return Right(userCredential.user);
     } catch (e) {
@@ -61,7 +63,8 @@ class AuthService {
       return Left(false);
     }
   }
-   Future<Either<bool, bool>> logout() async {
+
+  Future<Either<bool, bool>> logout() async {
     try {
       await _firebaseAuth.signOut();
       return const Right(true);

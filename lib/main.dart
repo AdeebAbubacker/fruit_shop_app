@@ -21,7 +21,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
-import 'package:fruit_shop_app/screens/sample_orders.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 import 'package:fruit_shop_app/screens/view_order_detail/view_order_detail_screen.dart';
@@ -91,13 +90,13 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
           '/': (context) => const SplashScreen(),
           '/sigin': (context) => const SignInScreen(),
           '/register': (context) =>
               const RegistrationScreen(), // Pass the actual item map
           '/mainscreen': (context) => const MainScreen(),
-          '/item': (context) => ViewItemScreen(),
+          '/viewItemDetails': (context) => ViewItemScreen(),
+          '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
         },
       ),
     );
@@ -105,34 +104,3 @@ class MyApp extends StatelessWidget {
 }
 
 
-// import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// // import 'screens/home_page.dart';
-// // import 'screens/item_screen.dart';
-// // import 'screens/cart_screen.dart';
-// // import 'screens/order_screen.dart';
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'E-commerce App',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       initialRoute: '/',
-//       routes: {
-//         '/': (context) => SignInScreen(),
-//         '/item': (context) => ItemScreen(), // Pass the actual item map
-//         '/cart': (context) => CartScreen(),
-//         '/order': (context) => OrderScreen(),
-//       },
-//     );
-//   }
-// }

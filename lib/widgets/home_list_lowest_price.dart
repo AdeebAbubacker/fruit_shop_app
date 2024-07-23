@@ -30,7 +30,7 @@ class HomeListLowestPrice extends StatelessWidget {
                   Item item = value.items[index];
                   return InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, '/item', arguments: item);
+                      Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

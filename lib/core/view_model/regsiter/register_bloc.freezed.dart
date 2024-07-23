@@ -19,19 +19,22 @@ mixin _$RegisterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) registerRequested,
+    required TResult Function(String email, String password, String name)
+        registerRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? registerRequested,
+    TResult? Function(String email, String password, String name)?
+        registerRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? registerRequested,
+    TResult Function(String email, String password, String name)?
+        registerRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +116,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) registerRequested,
+    required TResult Function(String email, String password, String name)
+        registerRequested,
   }) {
     return started();
   }
@@ -122,7 +126,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? registerRequested,
+    TResult? Function(String email, String password, String name)?
+        registerRequested,
   }) {
     return started?.call();
   }
@@ -131,7 +136,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? registerRequested,
+    TResult Function(String email, String password, String name)?
+        registerRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +188,7 @@ abstract class _$$RegisterEventImplCopyWith<$Res> {
           _$RegisterEventImpl value, $Res Function(_$RegisterEventImpl) then) =
       __$$RegisterEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String email, String password, String name});
 }
 
 /// @nodoc
@@ -198,6 +204,7 @@ class __$$RegisterEventImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? name = null,
   }) {
     return _then(_$RegisterEventImpl(
       email: null == email
@@ -208,6 +215,10 @@ class __$$RegisterEventImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -215,16 +226,19 @@ class __$$RegisterEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RegisterEventImpl implements _RegisterEvent {
-  const _$RegisterEventImpl({required this.email, required this.password});
+  const _$RegisterEventImpl(
+      {required this.email, required this.password, required this.name});
 
   @override
   final String email;
   @override
   final String password;
+  @override
+  final String name;
 
   @override
   String toString() {
-    return 'RegisterEvent.registerRequested(email: $email, password: $password)';
+    return 'RegisterEvent.registerRequested(email: $email, password: $password, name: $name)';
   }
 
   @override
@@ -234,11 +248,12 @@ class _$RegisterEventImpl implements _RegisterEvent {
             other is _$RegisterEventImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, email, password, name);
 
   @JsonKey(ignore: true)
   @override
@@ -250,29 +265,32 @@ class _$RegisterEventImpl implements _RegisterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) registerRequested,
+    required TResult Function(String email, String password, String name)
+        registerRequested,
   }) {
-    return registerRequested(email, password);
+    return registerRequested(email, password, name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? registerRequested,
+    TResult? Function(String email, String password, String name)?
+        registerRequested,
   }) {
-    return registerRequested?.call(email, password);
+    return registerRequested?.call(email, password, name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? registerRequested,
+    TResult Function(String email, String password, String name)?
+        registerRequested,
     required TResult orElse(),
   }) {
     if (registerRequested != null) {
-      return registerRequested(email, password);
+      return registerRequested(email, password, name);
     }
     return orElse();
   }
@@ -312,10 +330,12 @@ class _$RegisterEventImpl implements _RegisterEvent {
 abstract class _RegisterEvent implements RegisterEvent {
   const factory _RegisterEvent(
       {required final String email,
-      required final String password}) = _$RegisterEventImpl;
+      required final String password,
+      required final String name}) = _$RegisterEventImpl;
 
   String get email;
   String get password;
+  String get name;
   @JsonKey(ignore: true)
   _$$RegisterEventImplCopyWith<_$RegisterEventImpl> get copyWith =>
       throw _privateConstructorUsedError;

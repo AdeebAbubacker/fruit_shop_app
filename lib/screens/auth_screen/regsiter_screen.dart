@@ -14,8 +14,10 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final TextEditingController namecontroller = TextEditingController();
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
+  final FocusNode namefocusNode = FocusNode();
   final FocusNode emailfocusNode = FocusNode();
   final FocusNode passwordfocusNode = FocusNode();
 
@@ -31,7 +33,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    
+
     double perc20 = screenHeight * 0.020;
     double perc187 = screenHeight * 0.0187;
     double perc281 = screenHeight * 0.0281;
@@ -94,6 +96,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextFieldWidget(
+                            focusNode: namefocusNode,
+                            controller: namecontroller,
+                            hintText: 'Name',
+                          ),
+                          SizedBox(height: 10),
+                          TextFieldWidget(
                             focusNode: emailfocusNode,
                             controller: emailcontroller,
                             hintText: 'Email',
@@ -119,11 +127,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       const SizedBox(height: 10),
                       ColoredButton(
                         onPressed: () {
+                          final name = namecontroller.text;
                           final email = emailcontroller.text;
                           final password = passwordcontroller.text;
-                          context.read<RegisterBloc>().add(
-                              RegisterEvent.registerRequested(
-                                  email: email, password: password));
+                          context
+                              .read<RegisterBloc>()
+                              .add(RegisterEvent.registerRequested(
+                                name: name,
+                                email: email,
+                                password: password,
+                              ));
                         },
                         text: 'Sign Up',
                       ),
