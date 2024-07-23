@@ -58,3 +58,50 @@ class ColoredButton extends StatelessWidget {
     );
   }
 }
+
+class DrawerButtons extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final String content;
+  const DrawerButtons({
+    super.key,
+    required this.content,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: SizedBox(
+        width: double.infinity,
+        height: 40,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 22, 138, 31),
+                ),
+              ),
+            ),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(5),
+                onTap: onPressed,
+                child: Center(
+                  // Centering text vertically
+                  child: Text(
+                    content,
+                    textAlign: TextAlign.center,
+                    style: TextStyles.rubik12whiteFFw400,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

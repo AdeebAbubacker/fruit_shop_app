@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruit_shop_app/core/model/user/user_model.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth;
@@ -32,7 +33,6 @@ class AuthService {
           await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
-        
       );
       User? user = userCredential.user;
       if (user != null) {
@@ -58,9 +58,31 @@ class AuthService {
   Either<bool, bool> isUserSignedIn() {
     User? currentUser = _firebaseAuth.currentUser;
     if (currentUser != null) {
-      return Right(true);
+      return const Right(true);
     } else {
-      return Left(false);
+      return const Left(false);
+    }
+  }
+
+  Future<Either<bool, UserModel>> getUserData() async {
+    try {
+      User? currentUser = _firebaseAuth.currentUser;
+      if (currentUser != null) {
+        DocumentSnapshot userDoc =
+            await _db.collection('users').doc(currentUser.uid).get();
+        if (userDoc.exists) {
+          UserModel userModel =
+              UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
+
+          return Right(userModel);
+        } else {
+          return const Left(false);
+        }
+      } else {
+        return const Left(false);
+      }
+    } catch (e) {
+      return const Left(false);
     }
   }
 
@@ -69,7 +91,7 @@ class AuthService {
       await _firebaseAuth.signOut();
       return const Right(true);
     } catch (e) {
-      return Left(false);
+      return const Left(false);
     }
   }
 }

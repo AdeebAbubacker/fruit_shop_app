@@ -1,9 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fruit_shop_app/core/db/hiveDB/adapter/user_adapter/user_adapter.dart';
+import 'package:fruit_shop_app/core/db/hiveDB/box/userDetailsBox.dart';
 import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
 import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
 import 'package:fruit_shop_app/core/service/order/order_service.dart';
+import 'package:fruit_shop_app/core/view_model/getUserData/get_user_data_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/viewOrders/view_orders_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
@@ -24,15 +28,28 @@ import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 import 'package:fruit_shop_app/screens/view_order_detail/view_order_detail_screen.dart';
+import 'package:fruit_shop_app/testing/testing_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserDBAdapter());
+  UserDetailsBox = await Hive.openBox<UserDB>('UserDetailsBox');
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  ///----------------lock in portrait mode-----------------------------------
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    //  runApp(const MyApp());
+
+    runApp(const MyApp());
+  });
 }
 
 //----------------------------
@@ -81,6 +98,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ViewOrdersBloc(OrderService()),
         ),
+        BlocProvider(
+          create: (context) =>
+              GetUserDataBloc(AuthService(FirebaseAuth.instance)),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -102,5 +123,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
