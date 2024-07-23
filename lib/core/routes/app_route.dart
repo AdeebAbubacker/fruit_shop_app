@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void navigateToSiginIn(
   BuildContext context,
 ) =>
-    Navigator.of(context).pushReplacementNamed('/sigin');
+    Navigator.of(context).pushReplacementNamed('/siginin');
 
 void navigateToRegister(
   BuildContext context,

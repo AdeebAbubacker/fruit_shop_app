@@ -29,7 +29,7 @@
 //                 var item = items[index];
 //                 return ListTile(
 //                   title: Text(item['name']),
-//                   subtitle: Text('\$${item['price']}'),
+//                   subtitle: Text('\$${item['realPrice']}'),
 //                   leading: Image.network(item['imageUrl']),
 //                   onTap: () {
 //                     Navigator.pushNamed(context, '/item', arguments: item);

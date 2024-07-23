@@ -40,6 +40,7 @@ class _ViewItemScreenState extends State<ViewItemScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(width: 30),
                     Container(
                       decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 17, 150, 22),
@@ -82,7 +83,7 @@ class _ViewItemScreenState extends State<ViewItemScreen> {
                     ),
                     const Spacer(),
                     Text(
-                      "Rs ${item.realPrice * quantity}",
+                      "Rs ${_getRealPrice(item.discountPrice) * quantity}",
                       style: TextStyles.rubik16black24,
                     ),
                     const SizedBox(width: 30),
@@ -97,7 +98,13 @@ class _ViewItemScreenState extends State<ViewItemScreen> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      _cartService.addToCart(item.name, quantity);
+                      _cartService.addToCart(
+                        name: item.name,
+                        quantity: quantity,
+                        imgUrl: item.imageUrl,
+                        itemId: item.name,
+                        price: item.realPrice,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
@@ -128,5 +135,13 @@ class _ViewItemScreenState extends State<ViewItemScreen> {
         ),
       ),
     );
+  }
+
+  double _getRealPrice(String price) {
+    try {
+      return double.parse(price);
+    } catch (e) {
+      return 0; // or handle error appropriately
+    }
   }
 }

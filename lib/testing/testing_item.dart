@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 
 // class ItemScreen extends StatefulWidget {
 //   ItemScreen({super.key});
@@ -11,7 +12,7 @@
 
 // class _ItemScreenState extends State<ItemScreen> {
 //   int quantity = 1;
-//   final CartService _cartService = CartService();
+//   final CartService2 _cartService = CartService2();
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@
 //         children: [
 //           Image.network(item['imageUrl']),
 //           Text(item['name']),
-//           Text('\$${item['price']}'),
+//           Text('\$${item['realPrice']}'),
 //           Row(
 //             children: [
 //               IconButton(
@@ -50,7 +51,13 @@
 //           ),
 //           ElevatedButton(
 //             onPressed: () {
-//               _cartService.addToCart(item['name'], quantity);
+//               _cartService.addToCart(
+//                 name: item['name'],
+//                 quantity: quantity,
+//                 imgUrl: item['imageUrl'],
+//                 itemId: item['name'],
+//                 price: item['realPrice'],
+//               );
 //               Navigator.pop(context);
 //             },
 //             child: Text('Add to Cart'),
@@ -61,29 +68,50 @@
 //   }
 // }
 
-// class CartService {
-//   final FirebaseFirestore _db = FirebaseFirestore.instance;
-//   final FirebaseAuth _auth = FirebaseAuth.instance;
+// // class CartService {
+// //   final FirebaseFirestore _db = FirebaseFirestore.instance;
+// //   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-//   Future<void> addToCart(String itemId, int quantity) async {
-//     var user = _auth.currentUser;
-//     if (user != null) {
-//       DocumentReference cartRef = _db.collection('carts').doc(user.uid);
-//       DocumentReference itemRef = cartRef.collection('items').doc(itemId);
+// //   Future<void> addToCart({
+// //     required String itemId,
+// //     required int quantity,
+// //     required String name,
+// //     required String imgUrl,
+// //     required String price,
+// //   }) async {
+// //     var user = _auth.currentUser;
+// //     if (user != null) {
+// //       DocumentReference cartRef = _db.collection('carts').doc(user.uid);
+// //       DocumentReference itemRef = cartRef.collection('items').doc(itemId);
 
-//       await _db.runTransaction((transaction) async {
-//         DocumentSnapshot snapshot = await transaction.get(itemRef);
+// //       await _db.runTransaction((transaction) async {
+// //         DocumentSnapshot snapshot = await transaction.get(itemRef);
 
-//         if (!snapshot.exists) {
-//           transaction.set(itemRef, {
-//             'quantity': quantity,
-//             'itemDetails': _db.collection('items').doc(itemId),
-//           });
-//         } else {
-//           int newQuantity = snapshot['quantity'] + quantity;
-//           transaction.update(itemRef, {'quantity': newQuantity});
-//         }
-//       });
-//     }
-//   }
-// }
+// //         if (!snapshot.exists) {
+// //           transaction.set(itemRef, {
+// //             'quantity': quantity,
+// //             'name': name,
+// //             'imgUrl': imgUrl,
+// //             'price': price
+
+// //             //     required String itemId,
+// //             // required int quantity,
+// //             // required String name,
+// //             // required String imgUrl,
+// //             // required String price,
+// //           });
+// //         } else {
+// //           int newQuantity = snapshot['quantity'] + quantity;
+// //           transaction.update(itemRef, {
+// //             'quantity': newQuantity,
+// //             'name': name,
+// //             'imgUrl': imgUrl,
+// //             'price': price,
+// //           });
+// //         }
+// //       });
+// //     }
+// //   }
+// // }
+
+

@@ -5,12 +5,12 @@ import 'package:fruit_shop_app/core/model/home_item/home_item.dart';
 class HomeScreenService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // Future<List<Map<String, dynamic>>> getItems() async {
-  //   QuerySnapshot snapshot = await _db.collection('items').get();
-  //   return snapshot.docs
-  //       .map((doc) => doc.data() as Map<String, dynamic>)
-  //       .toList();
-  // }
+  Future<List<Map<String, dynamic>>> getItems() async {
+    QuerySnapshot snapshot = await _db.collection('items').get();
+    return snapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+  }
 
   Future<Either<bool, List<Item>>> getEssentialItems() async {
     try {
