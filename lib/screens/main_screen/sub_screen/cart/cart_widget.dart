@@ -97,7 +97,7 @@ class ViewCartWidget extends StatelessWidget {
                       subTotal: subTotal,
                       total: total,
                       proceed: () async {
-                        await _orderService.placeOrder(value.cartItems, 3);
+                        await _orderService.placeOrder(value.cartItems, '3');
                       },
                     );
                   },

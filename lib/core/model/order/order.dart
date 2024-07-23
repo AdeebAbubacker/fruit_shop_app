@@ -5,7 +5,7 @@ class OrderModel {
   final String orderId;
   final String userId;
   final List<CartItem> items;
-  final double totalPrice;
+  final String totalPrice;
   final DateTime timestamp;
 
   OrderModel({

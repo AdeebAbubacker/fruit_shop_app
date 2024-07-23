@@ -24,6 +24,7 @@ import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/screens/sample_orders.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
+import 'package:fruit_shop_app/screens/view_order_detail/view_order_detail_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -90,7 +91,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => const SampleOrders(),
+          '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
+          '/': (context) => const SplashScreen(),
           '/sigin': (context) => const SignInScreen(),
           '/register': (context) =>
               const RegistrationScreen(), // Pass the actual item map

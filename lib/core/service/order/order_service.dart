@@ -8,7 +8,7 @@ class OrderService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> placeOrder(List<CartItem> items, double totalPrice) async {
+  Future<void> placeOrder(List<CartItem> items, String totalPrice) async {
     var user = _auth.currentUser;
     if (user != null) {
       DocumentReference orderRef = _db.collection('orders').doc();
@@ -45,12 +45,15 @@ class OrderService {
         final orders = snapshot.docs.map((doc) {
           return OrderModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
         }).toList();
+        print('addddddddeebeee');
         print(orders[0]);
         return Right(orders);
       } catch (e) {
+        print('aseeeeb ${e.toString()}');
         return Left("Error fetching orders: $e");
       }
     } else {
+      print('aseeeeb');
       return Left("No user is currently logged in.");
     }
   }

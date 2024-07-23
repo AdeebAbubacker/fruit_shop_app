@@ -408,7 +408,7 @@ class TextStyles {
   static final TextStyle rubik14black33 = regular.copyWith(
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: const Color(0xFF333333),
+    color: Color.fromARGB(255, 92, 92, 92),
   );
   static final TextStyle rubik14black66 = regular.copyWith(
     fontSize: 14,
@@ -525,11 +525,10 @@ class TextStyles {
     fontSize: 10,
     color: const Color(0xFF333333),
   );
-  
+
 //  static final TextStyle rubik18black33 = regular.copyWith(
 //     fontSize: 18,
 //     fontWeight: FontWeight.w500,
 //     color: const Color(0xFF333333),
 //   );
 }
-

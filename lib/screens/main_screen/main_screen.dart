@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/cart/cart_widget.dart';
-import 'package:fruit_shop_app/screens/main_screen/sub_screen/orders/category_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/orders/order_widget.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/explore/explore_widget.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
@@ -24,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   static final List<Widget> _screens = [
     const HomeWidget(),
     const ExploreWidget(),
-     ViewOrders(),
+    const OrderWidget(),
     ViewCartWidget()
   ];
 
@@ -33,18 +33,16 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: const Color(0XFFF3F6FD),
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 10),
-              const HomeAppBar(),
-              Expanded(
-                child: _screens[_selectedIndex],
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10),
+            const HomeAppBar(),
+            Expanded(
+              child: _screens[_selectedIndex],
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: SizedBox(
