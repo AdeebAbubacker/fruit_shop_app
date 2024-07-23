@@ -7,9 +7,9 @@ import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/view_cart_price/view_cart_price_bloc.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
 
-class ViewCartScreen extends StatelessWidget {
-  ViewCartScreen({super.key});
-  final OrderService2 _orderService = OrderService2();
+class ViewOrders extends StatelessWidget {
+  ViewOrders({super.key});
+  final OrderService _orderService = OrderService();
   @override
   Widget build(BuildContext context) {
     // Trigger the event to load cart data only once at init state
@@ -18,111 +18,106 @@ class ViewCartScreen extends StatelessWidget {
       context.read<ViewCartPriceBloc>().add(ViewCartPriceEvent.viewcart());
     });
 
-    return Scaffold(
-      backgroundColor: const Color(0XFFFAFAFA),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 9),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 15),
-                Text(
-                  'My Cart',
-                  style: TextStyles.rubik18black33,
-                ),
-                const SizedBox(height: 20),
-                BlocListener<ViewCartBloc, ViewCartState>(
-                  listener: (context, state) {
-                    // Handle one-time actions here if needed
-                    // For example, show a snackbar or a dialog
-                  },
-                  child: BlocBuilder<ViewCartBloc, ViewCartState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        dataLoaded: (value) {
-                          return Column(
-                            children: [
-                              ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: value.cartItems.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(bottom: 15),
-                                    child: CartItemContainer(
-                                      imgUrl: value.cartItems[index].imgUrl,
-                                      name: value.cartItems[index].name,
-                                      price: value.cartItems[index].price,
-                                      initialQuantity:
-                                          value.cartItems[index].quantity,
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                        error: (value) {
-                          return const Text('Error fetching data');
-                        },
-                        loading: (_) {
-                          return const CircularProgressIndicator();
-                        },
-                        orElse: () {
-                          return Container(
-                            width: 230,
-                            height: 70,
-                            color: Colors.amber,
-                          );
-                        },
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 9),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 15),
+            Text(
+              'My Cart',
+              style: TextStyles.rubik18black33,
+            ),
+            const SizedBox(height: 20),
+            BlocListener<ViewCartBloc, ViewCartState>(
+              listener: (context, state) {
+                // Handle one-time actions here if needed
+                // For example, show a snackbar or a dialog
+              },
+              child: BlocBuilder<ViewCartBloc, ViewCartState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    dataLoaded: (value) {
+                      return Column(
+                        children: [
+                          ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: value.cartItems.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 15),
+                                child: CartItemContainer(
+                                  imgUrl: value.cartItems[index].imgUrl,
+                                  name: value.cartItems[index].name,
+                                  price: value.cartItems[index].price,
+                                  initialQuantity:
+                                      value.cartItems[index].quantity,
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       );
                     },
-                  ),
-                ),
-                BlocBuilder<ViewCartPriceBloc, ViewCartPriceState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      dataLoaded: (value) {
-                        int totalItems = value.cartItems.length;
-                        int subTotal = value.cartItems.fold(
-                            0,
-                            (sum, item) =>
-                                sum + (item.quantity * int.parse(item.price)));
-                        int total = subTotal +
-                            40; // Assuming Rs 40 is a fixed additional charge
+                    error: (value) {
+                      return const Text('Error fetching data');
+                    },
+                    loading: (_) {
+                      return const CircularProgressIndicator();
+                    },
+                    orElse: () {
+                      return Container(
+                        width: 230,
+                        height: 70,
+                        color: Colors.amber,
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            BlocBuilder<ViewCartPriceBloc, ViewCartPriceState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  dataLoaded: (value) {
+                    int totalItems = value.cartItems.length;
+                    int subTotal = value.cartItems.fold(
+                        0,
+                        (sum, item) =>
+                            sum + (item.quantity * int.parse(item.price)));
+                    int total = subTotal +
+                        40; // Assuming Rs 40 is a fixed additional charge
 
-                        return ProccedToCheckout(
-                          totalItems: totalItems,
-                          subTotal: subTotal,
-                          total: total,
-                          proceed: () async {
-                            await _orderService.placeOrder(value.cartItems, 3);
-                          },
-                        );
-                      },
-                      error: (value) {
-                        return const Text('Error fetching data');
-                      },
-                      loading: (_) {
-                        return const CircularProgressIndicator();
-                      },
-                      orElse: () {
-                        return Container(
-                          width: 230,
-                          height: 70,
-                          color: Colors.amber,
-                        );
+                    return ProccedToCheckout(
+                      totalItems: totalItems,
+                      subTotal: subTotal,
+                      total: total,
+                      proceed: () async {
+                        await _orderService.placeOrder(value.cartItems, 3);
                       },
                     );
                   },
-                ),
-              ],
+                  error: (value) {
+                    return const Text('Error fetching data');
+                  },
+                  loading: (_) {
+                    return const CircularProgressIndicator();
+                  },
+                  orElse: () {
+                    return Container(
+                      width: 230,
+                      height: 70,
+                      color: Colors.amber,
+                    );
+                  },
+                );
+              },
             ),
-          ),
+          ],
         ),
       ),
     );

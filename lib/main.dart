@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
 import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
+import 'package:fruit_shop_app/core/service/order/order_service.dart';
 import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/viewOrders/view_orders_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getCheckThisItem/get_check_thisitem_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
@@ -19,6 +21,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
+import 'package:fruit_shop_app/screens/sample_orders.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 
@@ -75,6 +78,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => UpdateCartBloc(CartService()),
         ),
+        BlocProvider(
+          create: (context) => ViewOrdersBloc(OrderService()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -84,7 +90,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => const SplashScreen(),
+          '/': (context) => const SampleOrders(),
           '/sigin': (context) => const SignInScreen(),
           '/register': (context) =>
               const RegistrationScreen(), // Pass the actual item map

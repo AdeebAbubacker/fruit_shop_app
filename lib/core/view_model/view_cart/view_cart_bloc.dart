@@ -8,11 +8,9 @@ part 'view_cart_state.dart';
 part 'view_cart_bloc.freezed.dart';
 
 class ViewCartBloc extends Bloc<ViewCartEvent, ViewCartState> {
-   final CartService cartService;
+  final CartService cartService;
   ViewCartBloc(this.cartService) : super(_Initial()) {
-
-
-          on<_Viewcart>((event, emit) async {
+    on<_Viewcart>((event, emit) async {
       emit(const ViewCartState.loading());
 
       try {

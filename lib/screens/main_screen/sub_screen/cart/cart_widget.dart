@@ -9,7 +9,7 @@ import 'package:fruit_shop_app/widgets/buttons.dart';
 
 class ViewCartWidget extends StatelessWidget {
   ViewCartWidget({super.key});
-  final OrderService2 _orderService = OrderService2();
+  final OrderService _orderService = OrderService();
   @override
   Widget build(BuildContext context) {
     // Trigger the event to load cart data only once at init state
