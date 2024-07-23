@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/widgets/caroul_widget.dart';
-import 'package:fruit_shop_app/widgets/home_list_check_item.dart';
 import 'package:fruit_shop_app/widgets/home_list_deal_today.dart';
 import 'package:fruit_shop_app/widgets/home_list_exotic_fruit.dart';
-import 'package:fruit_shop_app/widgets/home_list_veryday_essential.dart';
 import 'package:fruit_shop_app/widgets/home_list_lowest_price.dart';
 import 'package:fruit_shop_app/widgets/static_banner.dart';
 import 'package:fruit_shop_app/widgets/static_bottom_banner.dart';

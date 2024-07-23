@@ -25,13 +25,13 @@ class _MainScreenState extends State<MainScreen> {
     const HomeWidget(),
     const ExploreWidget(),
     const CategoryWidget(),
-    const CartWidget()
+    ViewCartWidget()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFF3F6FD),
+      backgroundColor: const Color(0XFFF3F6FD),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -78,26 +78,25 @@ class _MainScreenState extends State<MainScreen> {
                       )
                     : Image.asset(
                         'assets/bottom_nav/search.png',
-                        color:  Colors.grey,
+                        color: Colors.grey,
                       ),
               ),
               label: 'Search',
             ),
             BottomNavigationBarItem(
               icon: SizedBox(
-                width: 24.0,
-                height: 24.0,
-                child: _selectedIndex == 2
-                    ? Image.asset(
-                        'assets/bottom_nav/favourite.png',
-                        color: Colors.green,
-                      )
-                    : Image.asset(
-                        'assets/bottom_nav/favourite.png',
-                        color:  Colors.grey,
-                      ),
-              ),
-              label: 'Favourite',
+                  width: 24.0,
+                  height: 24.0,
+                  child: _selectedIndex == 2
+                      ? const Icon(
+                          Icons.shop,
+                          color: Colors.green,
+                        )
+                      : const Icon(
+                          Icons.shop,
+                          color: Colors.grey,
+                        )),
+              label: 'Orders',
             ),
             BottomNavigationBarItem(
               icon: SizedBox(
@@ -110,7 +109,7 @@ class _MainScreenState extends State<MainScreen> {
                       )
                     : Image.asset(
                         'assets/bottom_nav/cart.png',
-                        color:  Colors.grey,
+                        color: Colors.grey,
                       ),
               ),
               label: 'Cart',

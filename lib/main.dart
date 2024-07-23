@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
 import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
-import 'package:fruit_shop_app/core/view_model/bloc/view_cart_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getCheckThisItem/get_check_thisitem_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getEveryDayEssential/get_every_day_essential_bloc.dart';
@@ -12,14 +13,15 @@ import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/checklogin/check_login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/login/login_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/regsiter/register_bloc.dart';
-import 'package:fruit_shop_app/screens/cart/view_cart_screen.dart';
-import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
+import 'package:fruit_shop_app/core/view_model/view_cart_price/view_cart_price_bloc.dart';
 import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
-import 'package:fruit_shop_app/testing/testing_home.dart';
+import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
+import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -64,8 +66,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => GetExoticFruitBloc(HomeScreenService()),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (context) => ViewCartBloc(CartService()),
+        ),
+        BlocProvider(
+          create: (context) => ViewCartPriceBloc(CartService()),
+        ),
+        BlocProvider(
+          create: (context) => UpdateCartBloc(CartService()),
         ),
       ],
       child: MaterialApp(
@@ -76,8 +84,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) =>  const ViewCartScreen(),
-         '/siginin': (context) => const     SignInScreen(),
+          '/': (context) => const SplashScreen(),
+          '/sigin': (context) => const SignInScreen(),
           '/register': (context) =>
               const RegistrationScreen(), // Pass the actual item map
           '/mainscreen': (context) => const MainScreen(),
