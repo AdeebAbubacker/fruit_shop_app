@@ -24,6 +24,8 @@ import 'package:fruit_shop_app/screens/auth_screen/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
+import 'package:fruit_shop_app/screens/extras/aboutUs/about_us_screen.dart';
+import 'package:fruit_shop_app/screens/extras/termsAndConditions/termsn_condition_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
@@ -113,8 +115,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashScreen(),
           '/sigin': (context) => const SignInScreen(),
-          '/register': (context) =>
-              const RegistrationScreen(), // Pass the actual item map
+          '/register': (context) => const RegistrationScreen(),
           '/mainscreen': (context) => const MainScreen(),
           '/viewItemDetails': (context) => ViewItemScreen(),
           '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
@@ -123,3 +124,11 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+//https://up-homes-72ygjg-61fd9.web.app/#/privacy-policy
+//https://up-homes-72ygjg-61fd9.web.app
+//https://up-homes-72ygjg-61fd9.web.app/#/terms-conditions
+//------------------------------------------------
