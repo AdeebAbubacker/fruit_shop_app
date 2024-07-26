@@ -4,13 +4,11 @@ import 'package:fruit_shop_app/core/constants/const.dart';
 import 'package:svg_flutter/svg.dart';
 
 class HomeAppBar extends StatefulWidget {
-  final bool isthereQr;
   final bool isthereback;
   final VoidCallback? onBackTap; // Define the callback function
   final bool isVisible;
   const HomeAppBar({
     super.key,
-    this.isthereQr = true,
     this.isthereback = true,
     this.onBackTap,
     this.isVisible = true,
@@ -102,30 +100,6 @@ class _HomeAppBarState extends State<HomeAppBar> {
               ),
             ),
             const Spacer(),
-            InkWell(
-              radius: 233,
-              borderRadius: const BorderRadius.all(Radius.circular(23)),
-              onTap: () async {},
-              child: Material(
-                color: Colors.transparent, // Ensure the Material is invisible
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: paddingw20,
-                    right: paddingw20,
-                    top: 10,
-                    bottom: 10,
-                  ),
-                  child: Visibility(
-                    visible: widget.isthereQr,
-                    child: SvgPicture.asset(
-                      'assets/qr_code.svg',
-                      fit: BoxFit
-                          .contain, // Ensure the SVG fits within the 10x10 area
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

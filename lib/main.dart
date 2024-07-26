@@ -25,6 +25,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_shop_app/screens/auth_screen/regsiter_screen.dart';
 import 'package:fruit_shop_app/screens/extras/aboutUs/about_us_screen.dart';
+import 'package:fruit_shop_app/screens/extras/privacyPolicy/privacy_policy_screen.dart';
 import 'package:fruit_shop_app/screens/extras/termsAndConditions/termsn_condition_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
@@ -119,6 +120,9 @@ class MyApp extends StatelessWidget {
           '/mainscreen': (context) => const MainScreen(),
           '/viewItemDetails': (context) => ViewItemScreen(),
           '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
+          '/aboutUs': (context) => const AboutUsScreen(),
+          '/privacyPolicy': (context) => const PrivacyPolicyScreen(),
+          '/termsnCondition': (context) => const TermsnConditionScreen(),
         },
       ),
     );

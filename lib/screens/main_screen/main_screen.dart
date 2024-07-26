@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
@@ -65,13 +66,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
         BlocListener<LogoutBloc, LogoutState>(
           listener: (context, state) {
-        state.maybeMap(
+            state.maybeMap(
               userlogout: (value) async {
-              print('loogged out');
-              Navigator.pushReplacementNamed(context, '/sigin');
+                print('loogged out');
+                Navigator.pushReplacementNamed(context, '/sigin');
               },
               userNotlogout: (value) {
-                 print('not loogged out');
+                print('not loogged out');
               },
               loading: (_) {},
               orElse: () {},
@@ -79,165 +80,197 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
       ],
-      child: Scaffold(
-        drawer: Drawer(
-          backgroundColor: const Color.fromARGB(255, 216, 216, 216),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 55,
-                ),
-                CircleAvatar(
-                  radius: 42,
-                  backgroundColor: const Color.fromARGB(255, 225, 224, 224),
-                  child: Padding(
-                    padding: const EdgeInsets.all(
-                        3.0), // Adjust the padding to control the image size
-                    child: ClipOval(
-                      child: Image.asset(
-                        'assets/drawer/profile.png',
-                        color: Colors.black,
-                        fit: BoxFit.cover,
+      child: WillPopScope(
+        onWillPop: () async {
+          if (_selectedIndex == 0) {
+            SystemNavigator.pop();
+
+            // Allow exit
+          } else if (_selectedIndex == 1 ||
+              _selectedIndex == 2 ||
+              _selectedIndex == 3) {
+            setState(() {
+              _selectedIndex = 1;
+            });
+            return false; // Prevent exit
+          }
+
+          return false; // Prevent exit by default
+        },
+        child: Scaffold(
+          drawer: Drawer(
+            backgroundColor: const Color.fromARGB(255, 216, 216, 216),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 55,
+                  ),
+                  CircleAvatar(
+                    radius: 42,
+                    backgroundColor: const Color.fromARGB(255, 225, 224, 224),
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                          3.0), // Adjust the padding to control the image size
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/drawer/profile.png',
+                          color: Colors.black,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10),
-                ValueListenableBuilder<Box<UserDB>>(
-                  valueListenable:
-                      Hive.box<UserDB>('UserDetailsBox').listenable(),
-                  builder: (context, box, _) {
-                    final userDetails = box.values.toList();
-                    if (userDetails.isEmpty) {
+                  SizedBox(height: 10),
+                  ValueListenableBuilder<Box<UserDB>>(
+                    valueListenable:
+                        Hive.box<UserDB>('UserDetailsBox').listenable(),
+                    builder: (context, box, _) {
+                      final userDetails = box.values.toList();
+                      if (userDetails.isEmpty) {
+                        return const SizedBox();
+                      } else if (userDetails.isNotEmpty) {
+                        return Column(
+                          children: [
+                            Text(
+                              userDetails[0].name,
+                              style: TextStyles.rubik14black33,
+                            ),
+                            Text(
+                              userDetails[0].email,
+                              style: TextStyles.rubik14black33,
+                            ),
+                          ],
+                        );
+                      }
                       return const SizedBox();
-                    } else if (userDetails.isNotEmpty) {
-                      return Column(
-                        children: [
-                          Text(
-                            userDetails[0].name,
-                            style: TextStyles.rubik14black33,
-                          ),
-                          Text(
-                            userDetails[0].email,
-                            style: TextStyles.rubik14black33,
-                          ),
-                        ],
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                ),
-                const SizedBox(
-                  height: 35,
-                ),
-                DrawerButtons(
-                  content: 'Privacy Policy',
-                  onPressed: () {},
-                ),
+                    },
+                  ),
+                  const SizedBox(
+                    height: 35,
+                  ),
+                  DrawerButtons(
+                    content: 'Privacy Policy',
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/privacyPolicy');
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  DrawerButtons(
+                      content: 'Terms & Conditions',
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/termsnCondition');
+                      }),
+                  const SizedBox(height: 10),
+                  DrawerButtons(
+                      content: 'About',
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/aboutUs');
+                      }),
+                  const SizedBox(height: 10),
+                  DrawerButtons(
+                      content: 'Logout',
+                      onPressed: () async {
+                        context
+                            .read<LogoutBloc>()
+                            .add(const LogoutEvent.logout());
+                      }),
+                  const Spacer(),
+                ],
+              ),
+            ),
+          ),
+          backgroundColor: const Color(0XFFF3F6FD),
+          body: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
                 const SizedBox(height: 10),
-                DrawerButtons(content: 'Terms & Conditions', onPressed: () {}),
-                const SizedBox(height: 10),
-                DrawerButtons(content: 'About', onPressed: () {}),
-                const SizedBox(height: 10),
-                DrawerButtons(
-                    content: 'Logout',
-                    onPressed: () async {
-                      context
-                          .read<LogoutBloc>()
-                          .add(const LogoutEvent.logout());
-                    }),
-                const Spacer(),
+                HomeAppBar(
+                  isthereback: _selectedIndex == 1 ||
+                      _selectedIndex == 2 ||
+                      _selectedIndex == 3,
+                ),
+                Expanded(
+                  child: _screens[_selectedIndex],
+                ),
               ],
             ),
           ),
-        ),
-        backgroundColor: const Color(0XFFF3F6FD),
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 10),
-              const HomeAppBar(),
-              Expanded(
-                child: _screens[_selectedIndex],
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: SizedBox(
-          height: 92.0,
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: SizedBox(
-                    width: 24.0, // Set a fixed width
-                    height: 24.0, // Set a fixed height
-                    child: _selectedIndex == 0
+          bottomNavigationBar: SizedBox(
+            height: 92.0,
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: SizedBox(
+                      width: 24.0, // Set a fixed width
+                      height: 24.0, // Set a fixed height
+                      child: _selectedIndex == 0
+                          ? Image.asset(
+                              'assets/bottom_nav/home.png',
+                              color: Colors.green,
+                            )
+                          : Image.asset(
+                              'assets/bottom_nav/home.png',
+                              color: Colors.grey,
+                            )),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: SizedBox(
+                    width: 24.0,
+                    height: 24.0,
+                    child: _selectedIndex == 1
                         ? Image.asset(
-                            'assets/bottom_nav/home.png',
+                            'assets/bottom_nav/search.png',
                             color: Colors.green,
                           )
                         : Image.asset(
-                            'assets/bottom_nav/home.png',
+                            'assets/bottom_nav/search.png',
                             color: Colors.grey,
-                          )),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: SizedBox(
-                  width: 24.0,
-                  height: 24.0,
-                  child: _selectedIndex == 1
-                      ? Image.asset(
-                          'assets/bottom_nav/search.png',
-                          color: Colors.green,
-                        )
-                      : Image.asset(
-                          'assets/bottom_nav/search.png',
-                          color: Colors.grey,
-                        ),
+                          ),
+                  ),
+                  label: 'Search',
                 ),
-                label: 'Search',
-              ),
-              BottomNavigationBarItem(
-                icon: SizedBox(
+                BottomNavigationBarItem(
+                  icon: SizedBox(
+                      width: 24.0,
+                      height: 24.0,
+                      child: _selectedIndex == 2
+                          ? const Icon(
+                              Icons.shop,
+                              color: Colors.green,
+                            )
+                          : const Icon(
+                              Icons.shop,
+                              color: Colors.grey,
+                            )),
+                  label: 'Orders',
+                ),
+                BottomNavigationBarItem(
+                  icon: SizedBox(
                     width: 24.0,
                     height: 24.0,
-                    child: _selectedIndex == 2
-                        ? const Icon(
-                            Icons.shop,
+                    child: _selectedIndex == 3
+                        ? Image.asset(
+                            'assets/bottom_nav/cart.png',
                             color: Colors.green,
                           )
-                        : const Icon(
-                            Icons.shop,
+                        : Image.asset(
+                            'assets/bottom_nav/cart.png',
                             color: Colors.grey,
-                          )),
-                label: 'Orders',
-              ),
-              BottomNavigationBarItem(
-                icon: SizedBox(
-                  width: 24.0,
-                  height: 24.0,
-                  child: _selectedIndex == 3
-                      ? Image.asset(
-                          'assets/bottom_nav/cart.png',
-                          color: Colors.green,
-                        )
-                      : Image.asset(
-                          'assets/bottom_nav/cart.png',
-                          color: Colors.grey,
-                        ),
+                          ),
+                  ),
+                  label: 'Cart',
                 ),
-                label: 'Cart',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.green,
-            onTap: _onItemTapped,
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.green,
+              onTap: _onItemTapped,
+            ),
           ),
         ),
       ),

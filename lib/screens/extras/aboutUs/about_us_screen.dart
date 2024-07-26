@@ -21,7 +21,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..loadRequest(
-          Uri.parse('https://up-homes-72ygjg-61fd9.web.app'));
+          Uri.parse('https://yesyesloyalty.agatebc.in/privacy-policy'));
   }
 
   @override
