@@ -21,6 +21,7 @@ class GetExoticFruitBloc
         await result.fold((failure) async {
           emit(const GetExoticFruitState.error(error: false));
         }, (success) async {
+          print(success[0].toString());
           emit(GetExoticFruitState.dataLoaded(items: success));
         });
       } catch (e) {

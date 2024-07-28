@@ -7,6 +7,11 @@ import 'package:fruit_shop_app/core/service/auth/auth_service.dart';
 import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/service/home/home_screen_service.dart';
 import 'package:fruit_shop_app/core/service/order/order_service.dart';
+import 'package:fruit_shop_app/core/view_model/getExoticVegetable/get_exotic_vegetable_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getFreshFruit/get_fresh_fruit_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getFreshMangoes/get_fresh_mango_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getFreshVegetables/get_fresh_vegetable_bloc.dart';
+import 'package:fruit_shop_app/core/view_model/getLeafsandHerbs/get_leafs_n_herb_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getUserData/get_user_data_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/viewOrders/view_orders_bloc.dart';
@@ -28,12 +33,12 @@ import 'package:fruit_shop_app/screens/extras/aboutUs/about_us_screen.dart';
 import 'package:fruit_shop_app/screens/extras/privacyPolicy/privacy_policy_screen.dart';
 import 'package:fruit_shop_app/screens/extras/termsAndConditions/termsn_condition_screen.dart';
 import 'package:fruit_shop_app/screens/main_screen/main_screen.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/categories/individual_category_screen.dart';
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 import 'package:fruit_shop_app/screens/view_order_detail/view_order_detail_screen.dart';
 import 'package:fruit_shop_app/testing/testing_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'firebase_options.dart';
 
 void main() async {
@@ -90,6 +95,21 @@ class MyApp extends StatelessWidget {
           create: (context) => GetExoticFruitBloc(HomeScreenService()),
         ),
         BlocProvider(
+          create: (context) => GetExoticVegetableBloc(HomeScreenService()),
+        ),
+        BlocProvider(
+          create: (context) => GetFreshMangoBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetFreshVegetableBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetFreshFruitBloc(HomeScreenService()),
+        ),
+         BlocProvider(
+          create: (context) => GetLeafsandHerbsBloc(HomeScreenService()),
+        ),
+        BlocProvider(
           create: (context) => ViewCartBloc(CartService()),
         ),
         BlocProvider(
@@ -120,6 +140,7 @@ class MyApp extends StatelessWidget {
           '/mainscreen': (context) => const MainScreen(),
           '/viewItemDetails': (context) => ViewItemScreen(),
           '/viewOrderDetails': (context) => const ViewOrderDetailScreen(),
+          '/viewCategorySCreen': (context) =>  IndividualCategoryScreen(),
           '/aboutUs': (context) => const AboutUsScreen(),
           '/privacyPolicy': (context) => const PrivacyPolicyScreen(),
           '/termsnCondition': (context) => const TermsnConditionScreen(),

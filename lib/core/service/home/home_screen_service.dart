@@ -88,7 +88,102 @@ class HomeScreenService {
     }
   }
 
-  Future<Either<bool, List<Item>>> getEveryDayEssential() async {
+   Future<Either<bool, List<Item>>> getExoticVegetable() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isExoticVegetable', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+ Future<Either<bool, List<Item>>> getFreshMangoes() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isFreshMangoes', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+ Future<Either<bool, List<Item>>> getFreshVegetables() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isFreshVegetables', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+ Future<Either<bool, List<Item>>> getFreshFruit() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isFreshFruit', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+Future<Either<bool, List<Item>>> getLeafsandHerbs() async {
+    try {
+      QuerySnapshot snapshot = await _db
+          .collection('items')
+          .where('isLeafs_Herbs', isEqualTo: true)
+          .get();
+
+      List<Item> items = snapshot.docs
+          .map((doc) => Item.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      print(items);
+      return Right(items);
+    } catch (e) {
+      print('Error fetching essential items: $e');
+      return const Left(false);
+    }
+  }
+
+Future<Either<bool, List<Item>>> getEveryDayEssential() async {
     try {
       QuerySnapshot snapshot = await _db
           .collection('items')
@@ -109,75 +204,3 @@ class HomeScreenService {
 }
 
 
-
-
-
-// class HomeService {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-//   Future<Either<String, List<Map<String, dynamic>>>> fetchItems() async {
-//     try {
-//       // Reference to the "items" collection
-//       CollectionReference collection = _firestore.collection('items');
-
-//       // Get all documents from the collection
-//       QuerySnapshot querySnapshot = await collection.get();
-
-//       // Process and return the data as a list of maps
-//       List<Map<String, dynamic>> items = [];
-//       for (var doc in querySnapshot.docs) {
-//         items.add(doc.data() as Map<String, dynamic>);
-//       }
-//       print(items);
-//       return Right(items);
-//     } catch (e) {
-//       print('Error fetching items: $e');
-//       return Left(e.toString()); // More specific error handling possible
-//     }
-//   }
-// }
-
-// Future<void> updateProducts({
-//   required String name,
-//   required String realPrice,
-//   required String discountPrice,
-//   required String imageUrl,
-//   required bool isCitrus,
-//   required bool isReadyToEat,
-//   required bool isBeatTheHeat,
-//   required bool isCheckThisOut,
-//   required bool isEveryDayEssential,
-//   required bool isSummerFruit,
-//   required bool isDealofTheDay,
-//   required bool isExoticFruit,
-//   required bool isExoticVegetable,
-//   required bool isFreshFruit,
-//   required bool isFreshMangoes,
-//   required bool isFreshVegetables,
-//   required bool isLeafs_Herbs,
-// }) async {
-//   final FirebaseFirestore _db = FirebaseFirestore.instance;
-//   DocumentReference userRef = _db.collection('items').doc();
-
-//   return userRef.set({
-//     'name': name,
-//     'realPrice': realPrice,
-//     'discountPrice': discountPrice,
-//     'description': 'Fresh Item',
-//     'imageUrl': imageUrl,
-//     'offer': '20',
-//     'isCitrus': isCitrus,
-//     'isReadyToEat': isReadyToEat,
-//     'isBeatTheHeat': isBeatTheHeat,
-//     'isCheckThisOut': isCheckThisOut,
-//     'isEveryDayEssential': isEveryDayEssential,
-//     'isSummerFruit': isSummerFruit,
-//     'isDealofTheDay': isDealofTheDay,
-//     'isExoticFruit': isExoticFruit,
-//     'isExoticVegetable': isExoticVegetable,
-//     'isFreshFruit': isFreshFruit,
-//     'isFreshMangoes': isFreshMangoes,
-//     'isFreshVegetables': isFreshVegetables,
-//     'isLeafs_Herbs': isLeafs_Herbs,
-//   }, SetOptions(merge: true));
-// }

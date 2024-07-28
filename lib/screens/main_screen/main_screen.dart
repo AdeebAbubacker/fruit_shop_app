@@ -9,7 +9,7 @@ import 'package:fruit_shop_app/core/view_model/getUserData/get_user_data_bloc.da
 import 'package:fruit_shop_app/core/view_model/logout/logout_bloc.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/cart/cart_widget.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/orders/order_widget.dart';
-import 'package:fruit_shop_app/screens/main_screen/sub_screen/explore/explore_widget.dart';
+import 'package:fruit_shop_app/screens/main_screen/sub_screen/categories/category_widget.dart';
 import 'package:fruit_shop_app/screens/main_screen/sub_screen/home/home_widget.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static final List<Widget> _screens = [
     const HomeWidget(),
-    const ExploreWidget(),
+    const CategoryWidget(),
     const OrderWidget(),
     ViewCartWidget()
   ];
@@ -122,7 +122,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ValueListenableBuilder<Box<UserDB>>(
                     valueListenable:
                         Hive.box<UserDB>('UserDetailsBox').listenable(),
@@ -233,7 +233,7 @@ class _MainScreenState extends State<MainScreen> {
                             color: Colors.grey,
                           ),
                   ),
-                  label: 'Search',
+                  label: 'Categories',
                 ),
                 BottomNavigationBarItem(
                   icon: SizedBox(
