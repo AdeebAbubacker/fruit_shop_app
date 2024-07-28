@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
+import 'package:fruit_shop_app/core/model/home_item/home_item.dart';
+import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getExoticFruit/get_exotic_fruit_bloc.dart';
+import 'package:shimmer/shimmer.dart';
+
+
+
 
 class HomeListExoticfruit extends StatelessWidget {
   const HomeListExoticfruit({super.key});
@@ -9,116 +15,172 @@ class HomeListExoticfruit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<GetExoticFruitBloc>().add(GetExoticFruitEvent.getExoticfruit());
+      context
+          .read<GetDealofTheDayBloc>()
+          .add(const GetDealofTheDayEvent.getDealofTheDay());
     });
-    return BlocBuilder<GetExoticFruitBloc, GetExoticFruitState>(
+    return BlocBuilder<GetDealofTheDayBloc, GetDealofTheDayState>(
       builder: (context, state) {
         return state.maybeMap(
           dataLoaded: (value) {
-            print('success');
-            print('----------${value}');         return SizedBox(
+            return SizedBox(
               height: 289, // Give a fixed height
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: value.items.length,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      width: 160,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 250, 250),
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
+                  Item item = value.items[index];
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/viewItemDetails',
+                          arguments: item);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 255, 250, 250),
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
                             ),
-                            child: Image.network(
-                              value.items[index].imageUrl,
-                              height: 100,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                topRight: Radius.circular(15),
+                              ),
+                              child: Image.network(
+                                value.items[index].imageUrl,
+                                height: 100,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: const Color.fromARGB(
+                                        255, 223, 222, 222),
+                                    width: double.infinity,
+                                    height: 100,
+                                    child: const Center(
+                                      child: Icon(Icons.error,
+                                          color: Colors.white),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 2),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Text(
-                                    '${value.items[index].offer}% OFF',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 2),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  value.items[index].name,
-                                  style: TextStyles.rubik16black24,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Rs. ${value.items[index].realPrice}',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey[600],
-                                      decoration: TextDecoration.lineThrough),
-                                ),
-                                Text(
-                                  'Rs. ${value.items[index].discountPrice}',
-                                  style: TextStyles.rubik16black24w2700,
-                                ),
-                                SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    // Add to cart functionality
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                  ),
-                                  child: Center(
                                     child: Text(
-                                      'Add to Cart',
-                                      style: TextStyle(
+                                      '${value.items[index].offer}% OFF',
+                                      style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    value.items[index].name,
+                                    style: TextStyles.rubik16black24,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Rs. ${value.items[index].realPrice}',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[600],
+                                        decoration: TextDecoration.lineThrough),
+                                  ),
+                                  Text(
+                                    'Rs. ${value.items[index].discountPrice}',
+                                    style: TextStyles.rubik16black24w2700,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // Add to cart functionality
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'Add to Cart',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+          error: (value) {
+            return const Text('Error fetching data');
+          },
+          loading: (_) {
+            return SizedBox(
+              height: 289, // Give a fixed height
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: 23,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade200,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              color: Colors.white,
                             ),
                           ),
                         ],
@@ -129,19 +191,36 @@ class HomeListExoticfruit extends StatelessWidget {
               ),
             );
           },
-          error: (value) {
-            print('----------${value}');
-            return const Text('Error fetching data');
-          },
-          loading: (_) {
-            print('----------loading');
-            return const CircularProgressIndicator();
-          },
           orElse: () {
-            return Container(
-              width: 230,
-              height: 70,
-              color: Colors.amber,
+            return SizedBox(
+              height: 289, // Give a fixed height
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: 23,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade200,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             );
           },
         );

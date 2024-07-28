@@ -37,7 +37,6 @@ import 'package:fruit_shop_app/screens/main_screen/sub_screen/categories/individ
 import 'package:fruit_shop_app/screens/splash_screen/splash_screen.dart';
 import 'package:fruit_shop_app/screens/view_item/view_item_screen.dart';
 import 'package:fruit_shop_app/screens/view_order_detail/view_order_detail_screen.dart';
-import 'package:fruit_shop_app/testing/testing_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'firebase_options.dart';
 

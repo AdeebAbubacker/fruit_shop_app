@@ -67,14 +67,10 @@ class ViewCartWidget extends StatelessWidget {
                       return const Text('Error fetching data');
                     },
                     loading: (_) {
-                      return const CircularProgressIndicator();
+                      return const SizedBox();
                     },
                     orElse: () {
-                      return Container(
-                        width: 230,
-                        height: 70,
-                        color: Colors.amber,
-                      );
+                      return const SizedBox();
                     },
                   );
                 },
@@ -105,14 +101,10 @@ class ViewCartWidget extends StatelessWidget {
                     return const Text('Error fetching data');
                   },
                   loading: (_) {
-                    return const CircularProgressIndicator();
+                  return const SizedBox();
                   },
                   orElse: () {
-                    return Container(
-                      width: 230,
-                      height: 70,
-                      color: Colors.amber,
-                    );
+                    return const SizedBox();
                   },
                 );
               },
@@ -141,6 +133,7 @@ class ProccedToCheckout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(height: 30),
@@ -344,6 +337,7 @@ class _CartItemContainerState extends State<CartItemContainer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.network(
@@ -370,6 +364,7 @@ class _CartItemContainerState extends State<CartItemContainer> {
               ),
               const Spacer(),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 8),
                   Row(

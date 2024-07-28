@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
-import 'package:fruit_shop_app/core/model/order/order.dart';
-import 'package:fruit_shop_app/core/view_model/getExoticFruit/get_exotic_fruit_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/getExoticVegetable/get_exotic_vegetable_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/getFreshMangoes/get_fresh_mango_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/getFreshVegetables/get_fresh_vegetable_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/getLeafsandHerbs/get_leafs_n_herb_bloc.dart';
+
 import 'package:fruit_shop_app/core/view_model/viewOrders/view_orders_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
+
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({super.key});

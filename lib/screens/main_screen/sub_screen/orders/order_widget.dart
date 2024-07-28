@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/model/order/order.dart';
-import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/viewOrders/view_orders_bloc.dart';
-import 'package:fruit_shop_app/core/view_model/view_cart_price/view_cart_price_bloc.dart';
-import 'package:fruit_shop_app/screens/main_screen/sub_screen/cart/cart_widget.dart';
+
 
 class OrderWidget extends StatelessWidget {
   const OrderWidget({super.key});
@@ -35,7 +33,11 @@ class OrderWidget extends StatelessWidget {
             SizedBox(height: 15),
             BlocBuilder<ViewOrdersBloc, ViewOrdersState>(
                 builder: (context, state) {
-              return state.maybeMap(orElse: () {
+              return state.maybeMap(
+                loading: (value) {
+                  return SizedBox();
+                },
+                orElse: () {
                 return Container();
               }, dataLoaded: (value) {
                 return ListView.builder(

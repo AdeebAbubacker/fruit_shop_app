@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/model/home_item/home_item.dart';
-import 'package:fruit_shop_app/core/view_model/getCheckThisItem/get_check_thisitem_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
+import 'package:shimmer/shimmer.dart';
+
+
+
+
+
 
 class HomeListLowestPrice extends StatelessWidget {
   const HomeListLowestPrice({super.key});
@@ -28,10 +33,10 @@ class HomeListLowestPrice extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 itemBuilder: (context, index) {
                   Item item = value.items[index];
-                  return 
-                  InkWell(
+                  return InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                      Navigator.pushNamed(context, '/viewItemDetails',
+                          arguments: item);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -45,8 +50,7 @@ class HomeListLowestPrice extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -63,6 +67,18 @@ class HomeListLowestPrice extends StatelessWidget {
                                 height: 100,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: const Color.fromARGB(
+                                        255, 223, 222, 222),
+                                    width: double.infinity,
+                                    height: 100,
+                                    child: const Center(
+                                      child: Icon(Icons.error,
+                                          color: Colors.white),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                             Padding(
@@ -145,13 +161,67 @@ class HomeListLowestPrice extends StatelessWidget {
             return const Text('Error fetching data');
           },
           loading: (_) {
-            return const CircularProgressIndicator();
+            return SizedBox(
+              height: 289, // Give a fixed height
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: 23,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade200,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
           },
           orElse: () {
-            return Container(
-              width: 230,
-              height: 70,
-              color: Colors.amber,
+            return SizedBox(
+              height: 289, // Give a fixed height
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: 23,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade200,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 250,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             );
           },
         );

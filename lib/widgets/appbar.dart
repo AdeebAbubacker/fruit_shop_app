@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_shop_app/core/constants/common.dart';
 import 'package:fruit_shop_app/core/constants/const.dart';
-import 'package:svg_flutter/svg.dart';
 
 class HomeAppBar extends StatefulWidget {
   final bool isthereback;
@@ -33,10 +32,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
     return Visibility(
       visible: widget.isVisible,
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           left: 5,
           right: 5,
-          bottom: 25,
+          bottom: 5,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -44,45 +43,37 @@ class _HomeAppBarState extends State<HomeAppBar> {
             widget.isthereback
                 ? Visibility(
                     visible: widget.isthereback,
-                    child: InkWell(
-                      radius: 233,
-                      borderRadius: const BorderRadius.all(Radius.circular(23)),
-                      onTap: widget.onBackTap,
-                      child: Material(
-                        color: Colors
-                            .transparent, // Ensure the Material is invisible
-                        child: Container(
+                    child: Material(
+                      color: Colors
+                          .transparent, // Ensure the Material is invisible
+                      child: Container(
                           padding: EdgeInsets.only(
                             left: paddingw20,
                             right: paddingw20,
                             top: 10,
                             bottom: 10,
                           ),
-                          child: Image.asset(
-                            "assets/app_bar/hamberger.png",
-                            color: Colors.black,
-                            width: 25,
-                          ),
-                        ),
-                      ),
+                          child: IconButton(
+                              onPressed: widget.onBackTap,
+                              icon: const Icon(Icons.arrow_back_ios))),
                     ),
                   )
-                : InkWell(
-                    radius: 233,
-                    borderRadius: const BorderRadius.all(Radius.circular(23)),
-                    child: Material(
-                      color: Colors
-                          .transparent, // Ensure the Material is invisible
-                      child: Container(
+                : Material(
+                    color:
+                        Colors.transparent, // Ensure the Material is invisible
+                    child: Container(
                         padding: EdgeInsets.only(
                           left: paddingw20,
                           right: paddingw20,
                           top: 10,
                           bottom: 10,
                         ),
-                        child: const SizedBox(width: 9),
-                      ),
-                    ),
+                        child: IconButton(
+                            onPressed: widget.onBackTap,
+                            icon: const Icon(
+                              Icons.menu,
+                              size: 34,
+                            ))),
                   ),
             const Spacer(),
             Container(
@@ -100,6 +91,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
               ),
             ),
             const Spacer(),
+            const SizedBox(width: 35)
           ],
         ),
       ),

@@ -10,6 +10,7 @@ import 'package:fruit_shop_app/core/view_model/getFreshMangoes/get_fresh_mango_b
 import 'package:fruit_shop_app/core/view_model/getFreshVegetables/get_fresh_vegetable_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getLeafsandHerbs/get_leafs_n_herb_bloc.dart';
 import 'package:fruit_shop_app/widgets/appbar.dart';
+import 'package:shimmer/shimmer.dart';
 
 class IndividualCategoryScreen extends StatelessWidget {
   IndividualCategoryScreen({super.key});
@@ -108,10 +109,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -131,13 +133,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -155,10 +197,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -178,13 +221,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -202,10 +285,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -225,13 +309,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -249,10 +373,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -272,13 +397,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -296,10 +461,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -319,13 +485,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -343,10 +549,11 @@ class IndividualCategoryScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   itemCount: value.items.length,
                   itemBuilder: (context, index) {
-                      Item item = value.items[index];
+                    Item item = value.items[index];
                     return GestureDetector(
                       onTap: () {
-                       Navigator.pushNamed(context, '/viewItemDetails', arguments: item);
+                        Navigator.pushNamed(context, '/viewItemDetails',
+                            arguments: item);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10, right: 10),
@@ -366,13 +573,53 @@ class IndividualCategoryScreen extends StatelessWidget {
                 return const Text('Error fetching data');
               },
               loading: (_) {
-                return const CircularProgressIndicator();
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
               orElse: () {
-                return Container(
-                  width: 230,
-                  height: 70,
-                  color: Colors.amber,
+                return MasonryGridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -429,6 +676,16 @@ class IndividualCategoryWidget extends StatelessWidget {
               height: 100,
               width: double.infinity,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: const Color.fromARGB(255, 223, 222, 222),
+                  width: double.infinity,
+                  height: 100,
+                  child: const Center(
+                    child: Icon(Icons.error, color: Colors.white),
+                  ),
+                );
+              },
             ),
           ),
           Padding(
