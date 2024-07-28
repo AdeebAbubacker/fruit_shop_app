@@ -21,7 +21,7 @@ class _TermsnConditionScreenState extends State<TermsnConditionScreen> {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..loadRequest(
-          Uri.parse('https://yesyesloyalty.agatebc.in/privacy-policy'));
+          Uri.parse('https://up-homes-72ygjg-61fd9.web.app/#/terms-conditions'));
   }
 
   @override
