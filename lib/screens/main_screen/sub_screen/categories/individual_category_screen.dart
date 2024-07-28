@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fruit_shop_app/core/model/home_item/home_item.dart';
+import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/view_model/getExoticFruit/get_exotic_fruit_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getExoticVegetable/get_exotic_vegetable_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/getFreshFruit/get_fresh_fruit_bloc.dart';
@@ -638,7 +639,7 @@ class IndividualCategoryWidget extends StatelessWidget {
   final String offerRate;
   final String realPrice;
   final String discountPrice;
-  const IndividualCategoryWidget({
+  IndividualCategoryWidget({
     super.key,
     required this.text,
     required this.imgUrl,
@@ -646,7 +647,7 @@ class IndividualCategoryWidget extends StatelessWidget {
     required this.discountPrice,
     required this.realPrice,
   });
-
+  final CartService _cartService = CartService();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -732,8 +733,14 @@ class IndividualCategoryWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {
-                    // Add to cart functionality
+                  onPressed: () async {
+                    await _cartService.addToCart(
+                      name: text,
+                      quantity: 1,
+                      imgUrl: imgUrl,
+                      itemId: text,
+                      price: discountPrice,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,

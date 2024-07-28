@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/model/home_item/home_item.dart';
+import 'package:fruit_shop_app/core/service/cart/cart_service.dart';
 import 'package:fruit_shop_app/core/view_model/getDealofTheDay/get_dealof_the_day_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
-
-
-
-
-
 class HomeListLowestPrice extends StatelessWidget {
-  const HomeListLowestPrice({super.key});
-
+  HomeListLowestPrice({super.key});
+  final CartService _cartService = CartService();
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -123,8 +119,14 @@ class HomeListLowestPrice extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 10),
                                   ElevatedButton(
-                                    onPressed: () {
-                                      // Add to cart functionality
+                                    onPressed: () async{
+                                 await     _cartService.addToCart(
+                                        name:  value.items[index].name,
+                                        quantity: 1,
+                                        imgUrl: value.items[index].imageUrl,
+                                        itemId:value.items[index].name,
+                                        price: value.items[index].discountPrice,
+                                      );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.green,

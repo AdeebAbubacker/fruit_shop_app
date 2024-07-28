@@ -46,7 +46,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListLowestPrice(),
+                 HomeListLowestPrice(),
                 const SizedBox(height: 20),
                 StaticBanner(
                   image: 'assets/static banner/static banner 1.png',
@@ -66,7 +66,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListDealToday(),
+                 HomeListDealToday(),
                 const SizedBox(height: 20),
                 const SizedBox(height: 20),
                 Row(
@@ -83,7 +83,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListExoticfruit(),
+                 HomeListExoticfruit(),
                 const SizedBox(height: 20),
                 StaticBanner(
                   image: 'assets/static banner/static banner 1.png',
@@ -103,7 +103,7 @@ class HomeWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                const HomeListExoticfruit(),
+                 HomeListExoticfruit(),
                 const SizedBox(height: 20),
               ],
             ),
