@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_shop_app/core/constants/payment_config.dart';
 import 'package:fruit_shop_app/core/constants/text_styles.dart';
 import 'package:fruit_shop_app/core/service/order/order_service.dart';
 import 'package:fruit_shop_app/core/view_model/updateCart/update_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/view_cart/view_cart_bloc.dart';
 import 'package:fruit_shop_app/core/view_model/view_cart_price/view_cart_price_bloc.dart';
+import 'package:pay/pay.dart';
 import 'package:fruit_shop_app/widgets/buttons.dart';
 
 class ViewCartWidget extends StatelessWidget {
@@ -122,14 +126,63 @@ class ProccedToCheckout extends StatelessWidget {
   final int subTotal;
   final int total;
 
-  const ProccedToCheckout({
+   ProccedToCheckout({
     super.key,
     required this.totalItems,
     required this.subTotal,
     required this.total,
     required this.proceed,
   });
+  String os = Platform.operatingSystem;
 
+  var applePayButton = ApplePayButton(
+    paymentConfiguration: PaymentConfiguration.fromJsonString(defaultApplePay),
+    paymentItems: const [
+      PaymentItem(
+        label: 'Item A',
+        amount: '0.01',
+        status: PaymentItemStatus.final_price,
+      ),
+      PaymentItem(
+        label: 'Item B',
+        amount: '0.01',
+        status: PaymentItemStatus.final_price,
+      ),
+      PaymentItem(
+        label: 'Total',
+        amount: '0.02',
+        status: PaymentItemStatus.final_price,
+      )
+    ],
+    style: ApplePayButtonStyle.black,
+    width: double.infinity,
+    height: 50,
+    type: ApplePayButtonType.buy,
+    margin: const EdgeInsets.only(top: 15.0),
+    onPaymentResult: (result) => debugPrint('Payment Result $result'),
+    loadingIndicator: const Center(
+      child: CircularProgressIndicator(),
+    ),
+  );
+
+  var googlePayButton = GooglePayButton(
+    paymentConfiguration: PaymentConfiguration.fromJsonString(defaultGooglePay),
+    paymentItems: const [
+      PaymentItem(
+        label: 'Total',
+        amount: '0.01',
+        status: PaymentItemStatus.final_price,
+      )
+    ],
+    type: GooglePayButtonType.pay,
+    margin: const EdgeInsets.only(top: 15.0),
+    onPaymentResult: (result) => debugPrint('Payment Result $result'),
+    loadingIndicator: const Center(
+      child: CircularProgressIndicator(),
+    ),
+  );
+
+ 
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -192,6 +245,7 @@ class ProccedToCheckout extends StatelessWidget {
         //   onPressed: () {},
         //   text: 'CHECKOUT',
         // ),
+Platform.isIOS ? applePayButton : googlePayButton,
         ColoredButton(
           onPressed: proceed,
           text: 'PLACE ORDER',
